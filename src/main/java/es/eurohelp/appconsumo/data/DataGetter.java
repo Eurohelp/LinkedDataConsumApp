@@ -21,7 +21,7 @@ public class DataGetter {
 
 	public static void main(String[] args) {
 		try {
-			properties.load(new FileInputStream("kgsearch.properties"));
+			properties.load(new FileInputStream("src/main/resources/kgsearch.properties"));
 
 			HttpTransport httpTransport = new NetHttpTransport();
 			HttpRequestFactory requestFactory = httpTransport.createRequestFactory();
