@@ -1,6 +1,7 @@
 # Compiled class file
 *.class
-
+.project
+.classpath
 # Log file
 *.log
 
@@ -22,5 +23,6 @@
 hs_err_pid*
 
 target/
-Users/
+bin/
+.settings/
 
