@@ -1,0 +1,724 @@
+{
+  "@context": {
+    "@vocab": "http://schema.org/",
+    "goog": "http://schema.googleapis.com/",
+    "EntitySearchResult": "goog:EntitySearchResult",
+    "detailedDescription": "goog:detailedDescription",
+    "resultScore": "goog:resultScore",
+    "kg": "http://g.co/kg"
+  },
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/04yd3kw",
+        "name": "Novelas ejemplares",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Novela de Miguel de Cervantes",
+        "image": {
+          "contentUrl": "http://t3.gstatic.com/images?q=tbn:ANd9GcS_9GLRJy2alsb26zodHLxkxHmdmpDApkN0Xgdeibq1mQ7o-wXs",
+          "url": "https://en.wikipedia.org/wiki/Novelas_ejemplares"
+        },
+        "detailedDescription": {
+          "articleBody": "Las Novelas ejemplares son una serie de novelas cortas que Miguel de Cervantes escribió entre 1590 y 1612, y que publicaría en 1613 en una colección impresa en Madrid por Juan de la Cuesta, dada la gran acogida que obtuvo con la primera parte del Quijote.\n",
+          "url": "https://es.wikipedia.org/wiki/Novelas_ejemplares",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 26.920893
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/0261ln",
+        "name": "Camelot",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Novela de T. H. White",
+        "image": {
+          "contentUrl": "http://t0.gstatic.com/images?q=tbn:ANd9GcQnxIceumFw7idLxsP_XG2JZUZ3TVJmvYMrGF38l81nKzlaFiTg",
+          "url": "https://es.wikipedia.org/wiki/Camelot_(novelas)"
+        },
+        "detailedDescription": {
+          "articleBody": "The Once and Future King, traducida en España como Camelot, es una serie de cinco novelas del mito artúrico, escritas por Terence Hanbury White entre 1938 y 1940. ",
+          "url": "https://es.wikipedia.org/wiki/Camelot_(novelas)",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 16.885073
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/g/12111wnr",
+        "name": "Novelas españolas contemporáneas",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Novela de Benito Pérez Galdós",
+        "detailedDescription": {
+          "articleBody": "Novelas españolas contemporáneas es el nombre que el propio Benito Pérez Galdós dio a las obras publicadas entre 1881 y 1889 y que —en su mayoría— describen la sociedad madrileña en la segunda mitad del siglo XIX. ",
+          "url": "https://es.wikipedia.org/wiki/Novelas_espa%C3%B1olas_contempor%C3%A1neas",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 15.046403
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06mx6ys",
+        "name": "Novelas de Torquemada",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Novela de Benito Pérez Galdós",
+        "detailedDescription": {
+          "articleBody": "La Tetralogía de las Novelas de Torquemada es un conjunto de cuatro novelas del escritor español Benito Pérez Galdós publicadas entre 1889 y 1895.\u200b ",
+          "url": "https://es.wikipedia.org/wiki/Novelas_de_Torquemada",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 14.801305
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/0chxtg",
+        "@type": [
+          "ItemList",
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro"
+      },
+      "resultScore": 14.369782
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/02qltpq",
+        "name": "Empresas y tribulaciones de Maqroll el Gaviero",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Novela de Álvaro Mutis",
+        "detailedDescription": {
+          "articleBody": "Empresas y tribulaciones de Maqroll el Gaviero es una antología que reúne las siete novelas del notable escritor colombiano Álvaro Mutis que tienen como protagonista a Maqroll el Gaviero. ",
+          "url": "https://es.wikipedia.org/wiki/Empresas_y_tribulaciones_de_Maqroll_el_Gaviero_(novelas)",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 10.963239
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/0117slwd",
+        "name": "Novelas de Sadam Husein",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Novela",
+        "detailedDescription": {
+          "articleBody": "Sadam Husein, el fallecido presidente de Irak, escribió cuatro novelas y varios poemas. Los dos primeros libros fueron escritos por \"Él que lo escribió\", una forma tradicional de marcar autoría en árabe para preservar el anonimato.\u200b",
+          "url": "https://es.wikipedia.org/wiki/Novelas_de_Sadam_Husein",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 10.816127
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/0j7czkm",
+        "name": "The Maze Runner",
+        "@type": [
+          "BookSeries",
+          "Book",
+          "Thing"
+        ],
+        "description": "Novela",
+        "image": {
+          "contentUrl": "http://t0.gstatic.com/images?q=tbn:ANd9GcTx4yaevj7CEB5GGbFPR3V65hIV88ibPw4FYH78y94K0Z4JIakH",
+          "url": "https://es.wikipedia.org/wiki/The_Maze_Runner_(trilog%C3%ADa)"
+        },
+        "detailedDescription": {
+          "articleBody": "The Maze Runner es una trilogía escrita por el autor estadounidense James Dashner, que comprende las novelas juveniles The Maze Runner, The Scorch Trials y The Death Cure. ",
+          "url": "https://es.wikipedia.org/wiki/The_Maze_Runner_(trilog%C3%ADa)",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 10.737486
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/g/11g8cz4zjl",
+        "name": "Un viejo que leía novelas de amor",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Novela de Luis Sepúlveda",
+        "image": {
+          "contentUrl": "http://t0.gstatic.com/images?q=tbn:ANd9GcR1amR3p1na3Vh0mpF1abe0-HfIi7vM6SeGLMTGHgsa6JWItP2n",
+          "url": "https://es.wikipedia.org/wiki/Un_viejo_que_le%C3%ADa_novelas_de_amor"
+        }
+      },
+      "resultScore": 10.598482
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/02fdym",
+        "name": "Guía del autoestopista galáctico",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Novela de Douglas Adams",
+        "image": {
+          "contentUrl": "http://t3.gstatic.com/images?q=tbn:ANd9GcQ6VK2qaygbK5vYYIPrraQA-lckrxG0QEGFjxi1VpHD3FEG3KmI",
+          "url": "https://es.wikipedia.org/wiki/Gu%C3%ADa_del_autoestopista_gal%C3%A1ctico_(libro)"
+        },
+        "detailedDescription": {
+          "articleBody": "La Guía del autoestopista galáctico es una novela de ciencia ficción de Douglas Adams publicada en octubre de 1979. Es el primer libro de cinco que conforman la famosa saga de la Guía del autoestopista galáctico, que fue originalmente una radiocomedia escrita por el mismo autor en 1978.\n",
+          "url": "https://es.wikipedia.org/wiki/Gu%C3%ADa_del_autoestopista_gal%C3%A1ctico_(libro)",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        },
+        "url": "http://www.douglasadams.com/creations/0345391802.html"
+      },
+      "resultScore": 9.909804
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/g/120jqt4h",
+        "name": "Novelas de 1902",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Novela",
+        "detailedDescription": {
+          "articleBody": "Se conoce como novelas de 1902 a un grupo de cuatro novelas españolas publicadas en ese año que marcan el inicio de un nuevo rumbo en la novelística española del siglo XX. Las novelas de 1902 son:\nSonata de otoño, de Ramón María del Valle-Inclán\nLa voluntad, de José Martínez Ruiz\nAmor y pedagogía, de Miguel de Unamuno\nCamino de perfección, de Pío Baroja\n",
+          "url": "https://es.wikipedia.org/wiki/Novelas_de_1902",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 9.817273
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06j6hyg",
+        "name": "Un viejo que leía novelas de amor",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Novela de Luis Sepúlveda"
+      },
+      "resultScore": 8.578753
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06vjn1t",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Miguel de Cervantes"
+      },
+      "resultScore": 8.559315
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/g/122kjlt_",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Camilo Castelo Branco"
+      },
+      "resultScore": 8.51265
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/g/1223qkx8",
+        "name": "Novela caballeresca",
+        "@type": [
+          "Thing",
+          "Book"
+        ],
+        "description": "Novela",
+        "detailedDescription": {
+          "articleBody": "Introducción de la novela Aunque algunos confunden novela caballeresca y libro de caballerías, existe una diferencia esencial entre los dos géneros: la novela caballeresca, remite a un mundo posible, y a veces real, cuando se trata de biografías de caballeros que pertenecen a la historia. ",
+          "url": "https://es.wikipedia.org/wiki/Novela_caballeresca",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 8.325741
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/0699pky",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Miguel de Unamuno"
+      },
+      "resultScore": 7.980397
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/g/120vzkdk",
+        "name": "Hazañas Bélicas",
+        "@type": [
+          "Thing",
+          "Book"
+        ],
+        "description": "Libro",
+        "detailedDescription": {
+          "articleBody": "Hazañas Bélicas fue una serie de historietas bélicas creada por Boixcar en 1948 y desarrollada por él y otros autores, además de los entintadores José Martínez Piles y José Martínez, para Ediciones Toray.\u200b ",
+          "url": "https://es.wikipedia.org/wiki/Haza%C3%B1as_B%C3%A9licas",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 7.772563
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06ldv1s",
+        "name": "Los crímenes del amor",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Marqués de Sade",
+        "detailedDescription": {
+          "articleBody": "Los crímenes del amor es un libro del Marqués de Sade publicado por primera vez en 1799. Siendo esta, junto a Aline y Valcour y La marquesa de Gange, los únicos libros que se salen de su estilo tradicional. Sin escenas de sexo o tortura explícitos.\u200b",
+          "url": "https://es.wikipedia.org/wiki/Los_cr%C3%ADmenes_del_amor",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 7.631568
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/05qg_r0",
+        "name": "Ciencia ficción Las 100 mejores novelas",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de David Pringle"
+      },
+      "resultScore": 7.601036
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/g/122kc8f_",
+        "name": "Ideas sobre las novelas",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Novela",
+        "detailedDescription": {
+          "articleBody": "Ideas sobre las novelas es un pequeño ensayo del marqués de Sade en el que se refiere al origen e historia de la novela, así como da consejos sobre algunas normas que deben seguirse para enfrentarse a la escritura de una obra de este género. ",
+          "url": "https://es.wikipedia.org/wiki/Ideas_sobre_las_novelas",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 7.214149
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/g/121yh8zy",
+        "name": "Guerras Clon",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Novelas",
+        "detailedDescription": {
+          "articleBody": "Las Guerras Clon es una serie de novelas basada en el conflicto ficticio de la Guerra de las Galaxias. Fue publicada en España por la editorial Alberto Santos Editor desde 2002 hasta 2005.\n",
+          "url": "https://es.wikipedia.org/wiki/Guerras_Clon_(novelas)",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 6.891238
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06sr2z8",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de César Vallejo"
+      },
+      "resultScore": 6.77396
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/g/11c51t0llv",
+        "name": "Dos novelas sociologicas",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Ernesto Quesada"
+      },
+      "resultScore": 6.757776
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06c8m74",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Juan Valera"
+      },
+      "resultScore": 5.789787
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06f4xzk",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Miguel de Cervantes"
+      },
+      "resultScore": 5.61512
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/0679ntx",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de José Donoso"
+      },
+      "resultScore": 5.521789
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06jk7hg",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Juan García Ponce"
+      },
+      "resultScore": 5.510859
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06bw9zl",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Miguel de Cervantes"
+      },
+      "resultScore": 5.488636
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06fcfgm",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Voltaire"
+      },
+      "resultScore": 5.477337
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06mr9f3",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Julio Cortázar"
+      },
+      "resultScore": 5.477337
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/066y6xr",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Juan Carlos Onetti"
+      },
+      "resultScore": 5.465908
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06sv37z",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Manuel Vázquez Montalbán"
+      },
+      "resultScore": 5.454347
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06k1f6s",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Adolfo Bioy Casares"
+      },
+      "resultScore": 5.454347
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06bf3s2",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Rosa Chacel"
+      },
+      "resultScore": 5.454347
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06jlybk",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Diamela Eltit"
+      },
+      "resultScore": 5.454347
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06sct4g",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Gottfried Keller"
+      },
+      "resultScore": 5.430817
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06fdhms",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Leopoldo Alas, Clarín"
+      },
+      "resultScore": 5.430817
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06nxfb6",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Vladimir Nabokov"
+      },
+      "resultScore": 5.430817
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06b0n_4",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Autran Dourado"
+      },
+      "resultScore": 5.430817
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06d7y31",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Mariano Azuela"
+      },
+      "resultScore": 5.430817
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06g0b3s",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Marion Lennox y Susan Meier"
+      },
+      "resultScore": 5.41884
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06kb01r",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Salvador de Madariaga"
+      },
+      "resultScore": 5.41884
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06g49pk",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Horacio Quiroga"
+      },
+      "resultScore": 5.41884
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06n33v1",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro"
+      },
+      "resultScore": 5.41884
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06jrg9k",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Horacio Quiroga"
+      },
+      "resultScore": 5.41884
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06nkysj",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro"
+      },
+      "resultScore": 5.41884
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06kb01_",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro"
+      },
+      "resultScore": 5.406719
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06dzj4g",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Adolfo Bioy Casares"
+      },
+      "resultScore": 5.406719
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/068wlfr",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Roberto Arlt"
+      },
+      "resultScore": 5.406719
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/06b_vb5",
+        "@type": [
+          "Book",
+          "Thing"
+        ],
+        "description": "Libro de Roberto Arlt"
+      },
+      "resultScore": 5.406719
+    }
+  ]
+}
