@@ -17,7 +17,7 @@
 				value="http://ckan.eurohelp.es:5820/LinkedDataConsumApp/query" />
 				<Param name="login" value="admin"/>
 				<Param name="password" value="ctxakurra"/>
-				<Param name="graph" value="http://lod.eurohelp.es/graph/books"/>
+				<Param name="graph" value="http://lod.eurohelp.es/graph/novelas"/>
 		</DataSource>
 	</DataSources>
 	<Interlinks>
@@ -41,7 +41,7 @@
 			</LinkageRule>
 			<Outputs>
 				<Output type="file" minConfidence="0.4">
-					<Param value="src/main/resources/verify_links.nt" name="file" />
+					<Param value="src/main/resources/verify-links-novelas.nt" name="file" />
 					<Param value="ntriples" name="format" />
 				</Output>
 			</Outputs>

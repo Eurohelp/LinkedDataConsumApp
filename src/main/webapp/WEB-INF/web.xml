@@ -4,4 +4,12 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+    <servlet>
+    <servlet-name>ServGeneradorIndex</servlet-name>
+    <servlet-class>es.eurohelp.appconsumo.servlet.ServGeneradorIndex</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServGeneradorIndex</servlet-name>
+    <url-pattern>/ServGeneradorIndex</url-pattern>
+  </servlet-mapping>
 </web-app>

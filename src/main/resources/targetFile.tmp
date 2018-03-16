@@ -1,0 +1,303 @@
+{
+  "@context": {
+    "@vocab": "http://schema.org/",
+    "goog": "http://schema.googleapis.com/",
+    "EntitySearchResult": "goog:EntitySearchResult",
+    "detailedDescription": "goog:detailedDescription",
+    "resultScore": "goog:resultScore",
+    "kg": "http://g.co/kg"
+  },
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/g/11fxwq9p0j",
+        "name": "Golden",
+        "@type": [
+          "Thing",
+          "MusicAlbum"
+        ],
+        "description": "Álbum musical de Romeo Santos"
+      },
+      "resultScore": 181.561295
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/0xn5zbk",
+        "name": "Formula, Vol. 2",
+        "@type": [
+          "MusicAlbum",
+          "Thing"
+        ],
+        "description": "Álbum musical de Romeo Santos",
+        "detailedDescription": {
+          "articleBody": "Fórmula, Vol. 2 es el nombre del segundo álbum de estudio del cantautor estadounidense Romeo Santos.\u200b Fue lanzado al mercado por Sony Music Latin el 25 de febrero de 2014.\u200b\u200b ",
+          "url": "https://es.wikipedia.org/wiki/Formula,_vol._2",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 81.183678
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/0hrdfck",
+        "name": "Formula, vol. 1",
+        "@type": [
+          "MusicAlbum",
+          "Thing"
+        ],
+        "description": "Álbum musical de Romeo Santos",
+        "detailedDescription": {
+          "articleBody": "Formula, Vol. 1 es el álbum de estudio debut del cantautor estadounidense Romeo Santos, lanzado el 8 de noviembre de 2011 por Sony Music Latin. ",
+          "url": "https://es.wikipedia.org/wiki/Formula,_vol._1",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 79.354218
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/g/11hcnjkb48",
+        "name": "Golden",
+        "@type": [
+          "Thing",
+          "MusicAlbum"
+        ],
+        "detailedDescription": {
+          "articleBody": "Golden es el tercer álbum de estudio del cantautor estadounidense Romeo Santos. Fue lanzado al mercado por Sony Music Latin el 21 de julio de 2017. ",
+          "url": "https://es.wikipedia.org/wiki/Golden_(%C3%A1lbum_de_Romeo_Santos)",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 62.525352
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/0pl29wn",
+        "name": "The King Stays King: Sold Out at Madison Square Garden",
+        "@type": [
+          "MusicAlbum",
+          "Thing"
+        ],
+        "description": "Álbum musical de Romeo Santos",
+        "detailedDescription": {
+          "articleBody": "The king stays king: sold out at Madison Square Garden —en español; El rey permanece rey: entradas agotadas en el Madison Square Garden— es el primer álbum en vivo del cantautor estadounidense Romeo Santos.\u200b ",
+          "url": "https://es.wikipedia.org/wiki/The_king_stays_king:_sold_out_at_Madison_Square_Garden",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 40.045628
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/g/12ckhrwtx",
+        "name": "Daddy Yankee",
+        "@type": [
+          "MusicAlbum",
+          "Thing"
+        ],
+        "description": "Álbum musical de Daddy Yankee",
+        "detailedDescription": {
+          "articleBody": "Daddy Yankee es un álbum presentado por los fanáticos de Daddy Yankee y los productores musicales Luny Tunes &amp; Los Jedis, este álbum digital se lanzó conmemorando los 10 años del lanzamiento de su primer disco No Mercy. ",
+          "url": "https://es.wikipedia.org/wiki/Daddy_Yankee_(%C3%A1lbum)",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 20.532717
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/0n495vp",
+        "name": "Vida",
+        "@type": [
+          "MusicAlbum",
+          "Thing"
+        ],
+        "description": "Álbum musical de Draco Rosa",
+        "detailedDescription": {
+          "articleBody": "Vida es el título del álbum de Draco Rosa. Contiene 16 temas cantados a dúo.\nEl álbum ganó el Premio Grammy Latino en la categoría de mejor álbum del año durante la entrega del 2013.",
+          "url": "https://es.wikipedia.org/wiki/Vida_(%C3%A1lbum_de_Draco_Rosa)",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 17.215961
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/05zk1x7",
+        "name": "The Last",
+        "@type": [
+          "MusicAlbum",
+          "Thing"
+        ],
+        "description": "Álbum musical de Aventura",
+        "detailedDescription": {
+          "articleBody": "The Last es el nombre del quinto y último álbum de estudio y el noveno en total grabado por el grupo de bachata estadounidense-dominicano Aventura. Fue lanzado al mercado bajo los sello discográficos Premium Latin y Sony Music Latin el 9 de junio de 2009. ",
+          "url": "https://es.wikipedia.org/wiki/The_Last",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 15.404119
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/0_zh1s4",
+        "name": "Sex and Love",
+        "@type": [
+          "MusicAlbum",
+          "Thing"
+        ],
+        "description": "Álbum musical de Enrique Iglesias",
+        "detailedDescription": {
+          "articleBody": "Sex and Love es el nombre del décimo álbum de estudio y segundo álbum bilingüe del cantante y compositor español Enrique Iglesias. Fue lanzado al mercado por los sellos discográficos Republic Records y Universal Music Latino el 18 de marzo de 2014.\n",
+          "url": "https://es.wikipedia.org/wiki/Sex_and_Love",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 14.4768
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/g/11b6lmwvhf",
+        "name": "Pa'l Mundo: First Class Delivery",
+        "@type": [
+          "MusicAlbum",
+          "Thing"
+        ],
+        "description": "Álbum musical de Wisin Y Yandel",
+        "detailedDescription": {
+          "articleBody": "Pa'l mundo: First class delivery es un álbum recopilatorio del dúo de reggaeton, Wisin &amp; Yandel y salió a la venta el 17 de agosto de 2007, por la discográfica WY Records y la distribuidora Machete Music.\n",
+          "url": "https://es.wikipedia.org/wiki/Pa'l_mundo:_First_class_delivery",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 12.443074
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/01qfzvs",
+        "name": "Pa'l mundo",
+        "@type": [
+          "MusicAlbum",
+          "Thing"
+        ],
+        "description": "Álbum musical de Wisin Y Yandel",
+        "detailedDescription": {
+          "articleBody": "Pa'l mundo es el nombre del quinto álbum de estudio de Wisin &amp; Yandel Salió al mercado el 8 de noviembre de 2005 y fue producido por la discográfica Machete Music. ",
+          "url": "https://es.wikipedia.org/wiki/Pa'l_mundo",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 12.374098
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/0_yg25c",
+        "name": "Corazón",
+        "@type": [
+          "MusicAlbum",
+          "Thing"
+        ],
+        "description": "Álbum de música de Santana",
+        "detailedDescription": {
+          "articleBody": "Corazón es un álbum de estudio de Santana publicado por Sony Music el 6 de mayo de 2014. Los productores ejecutivos de dicho álbum son Clive Davis, Carlos Santana, Afo Verde, Michael Vrionis y Tom Corson. ",
+          "url": "https://es.wikipedia.org/wiki/Coraz%C3%B3n_(%C3%A1lbum_de_Santana)",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 12.095403
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/g/1hl3hljqx",
+        "name": "Bastardo: The Mixtape",
+        "@type": [
+          "MusicAlbum",
+          "Thing"
+        ],
+        "description": "Álbum musical de Gerry Capó",
+        "detailedDescription": {
+          "articleBody": "Bastardo es el primer álbum como solista del ex integrante del dúo Erre XI Gerry Capo. El álbum fue lanzado mediante la internet como un mixtape bajo el sello discográfico El Cartel Records del artista Daddy Yankee. ",
+          "url": "https://es.wikipedia.org/wiki/Bastardo:_The_Mixtape",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 12.002109
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/03c89km",
+        "name": "Tomando control: Live",
+        "@type": [
+          "MusicAlbum",
+          "Thing"
+        ],
+        "description": "Álbum musical de Wisin Y Yandel",
+        "detailedDescription": {
+          "articleBody": "Tomando control: Live es el primer álbum en vivo del dúo puertorriqueño de reggaeton Wisin &amp; Yandel. El CD consta del recital dado el 17 de marzo de 2007 en El Choliseo de Puerto Rico.",
+          "url": "https://es.wikipedia.org/wiki/Tomando_control:_Live",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 9.239373
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/g/11c38jggdl",
+        "name": "Odisea",
+        "@type": [
+          "Thing",
+          "MusicAlbum"
+        ],
+        "description": "Álbum musical de Ozuna",
+        "image": {
+          "contentUrl": "http://t2.gstatic.com/images?q=tbn:ANd9GcTXefSOYOX_6SF8e0gUnW0jolkHmD8Epo_GL5y9Zc6eNFi1H72h",
+          "url": "https://es.wikipedia.org/wiki/Odisea_(%C3%A1lbum_de_Ozuna)"
+        },
+        "detailedDescription": {
+          "articleBody": "Odisea The Album es el álbum debut del cantante y compositor puertorriqueño Ozuna, para el cual cuenta con las colaboraciones de De La Ghetto, Anuel AA, J Balvin, Nicky Jam entre otros. ",
+          "url": "https://es.wikipedia.org/wiki/Odisea_(%C3%A1lbum_de_Ozuna)",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 7.370462
+    },
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/011cc63y",
+        "name": "Elypse",
+        "@type": [
+          "MusicAlbum",
+          "Thing"
+        ],
+        "description": "Álbum musical de Camila",
+        "image": {
+          "contentUrl": "http://t2.gstatic.com/images?q=tbn:ANd9GcTRMjltWqRs3C2NB-W0g5wWgVGDWfwiar51KVBsp65_3VNqlsae",
+          "url": "https://commons.wikimedia.org/wiki/File:Camila_-_Elypse.svg"
+        },
+        "detailedDescription": {
+          "articleBody": "Elypse es el tercer álbum de estudio de la banda mexicana Camila, publicado el 3 de junio de 2014 a través de Columbia Records en Europa y por Sony Music en el resto del mundo.\u200b ",
+          "url": "https://es.wikipedia.org/wiki/Elypse",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        }
+      },
+      "resultScore": 6.057678
+    }
+  ]
+}
