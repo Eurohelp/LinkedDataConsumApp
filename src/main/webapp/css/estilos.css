@@ -2,7 +2,6 @@
 	padding: 0;
 	margin: 0;
 	border: 0;
-	font-family: 'Bellefair', serif;
 }
 
 h3 {
@@ -34,21 +33,12 @@ body {
 }
 
 #container {
-  margin: 20px;
-  width: 200px;
-  height: 200px;
-  position: relative;
+	margin: 20px;
+	width: 200px;
+	height: 200px;
+	position: relative;
 }
 
-.pageLeftMenu {
-	margin-top: 40px;
-	float: left;
-	clear: none;
-	height: 70%;
-	width: 20%;
-	font-size: large;
-	font-family: 'Bellefair', serif;
-}
 
 svg {
 	overflow: visible;
@@ -59,6 +49,8 @@ svg {
 	clear: none;
 	height: 70%;
 	width: 80%;
+	margin-left: 10%;
+	margin-right:10%;
 	font-family: 'Bellefair', serif;
 }
 
@@ -114,9 +106,7 @@ span {
 	font-size: large;
 	padding: 40px;
 }
-btn-default{
-		float: left;
-}
+
 #olderResults {
 	float: left;
 	margin-top: 30px;
@@ -128,6 +118,17 @@ btn-default{
 
 #busqueda {
 	font-size: large;
+}
+
+table {
+	border-collapse: collapse;
+	border: 2px black solid;
+	font: 14px sans-serif;
+}
+
+td {
+	border: 1px black solid;
+	padding: 5px;
 }
 
 .alertify-notifier .ajs-message.ajs-error {

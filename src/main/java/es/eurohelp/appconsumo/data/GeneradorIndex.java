@@ -32,6 +32,7 @@ public class GeneradorIndex {
 			throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException {
 		cfg = new Configuration(new Version(2, 3, 20));
 		cfg.setDefaultEncoding("UTF-8");
+
 		cfg.setLocale(Locale.US);
 		cfg.setClassForTemplateLoading(GeneradorIndex.class, "/");
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
@@ -40,6 +41,7 @@ public class GeneradorIndex {
 	public String generarIndex() throws TemplateException, IOException {
 		Map<String, Object> listaGlobal = new HashMap<String, Object>();
 		template = cfg.getTemplate("index.ftl");
+		template.setOutputEncoding("UTF-8");
 		StringWriter stringWriter = new StringWriter();
 		template.process(listaGlobal, stringWriter);
 		return stringWriter.toString();
@@ -49,6 +51,7 @@ public class GeneradorIndex {
 		Map<String, Object> listaGlobal = new HashMap<String, Object>();
 		listaGlobal.put("tipoConsulta", tipoConsulta);
 		template = cfg.getTemplate("index.ftl");
+		template.setOutputEncoding("UTF-8");
 		StringWriter stringWriter = new StringWriter();
 		template.process(listaGlobal, stringWriter);
 		return stringWriter.toString();
@@ -79,7 +82,8 @@ public class GeneradorIndex {
 	}
 
 	// public String generarIndex(String tipoConsulta, String
-	// segundaElecc,String terceraElecc, List<String> listaNombreRecursos, String
+	// segundaElecc,String terceraElecc, List<String> listaNombreRecursos,
+	// String
 	// sede) throws TemplateNotFoundException, MalformedTemplateNameException,
 	// ParseException, IOException, TemplateException {
 	// Map<String, Object> listaGlobal = new HashMap<String, Object>();
@@ -95,9 +99,9 @@ public class GeneradorIndex {
 	// }
 
 	public String generarIndex(String tipoConsulta, String segundaElecc, String terceraElecc,
-			List<String> listaNombreRecursos, String tipoInformacionVentasAutorNombreSeleccionado, List<String> listaSedes)
-			throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException,
-			TemplateException {
+			List<String> listaNombreRecursos, String tipoInformacionVentasAutorNombreSeleccionado,
+			List<String> listaSedes) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException,
+			IOException, TemplateException {
 		Map<String, Object> listaGlobal = new HashMap<String, Object>();
 		listaGlobal.put("tipoConsulta", tipoConsulta);
 		listaGlobal.put("tipoInfoConcreta", segundaElecc);
@@ -113,7 +117,8 @@ public class GeneradorIndex {
 
 	public String generarIndex(String tipoConsulta, String segundaElecc, String terceraElecc,
 			List<String> listaNombreRecursos, String tipoInformacionVentasAutorNombreSeleccionado,
-			List<String> listaSedes, String sedeSeleccionada) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
+			List<String> listaSedes, String sedeSeleccionada) throws TemplateNotFoundException,
+			MalformedTemplateNameException, ParseException, IOException, TemplateException {
 		Map<String, Object> listaGlobal = new HashMap<String, Object>();
 		listaGlobal.put("tipoConsulta", tipoConsulta);
 		listaGlobal.put("tipoInfoConcreta", segundaElecc);
@@ -123,6 +128,67 @@ public class GeneradorIndex {
 		listaGlobal.put("listaNombreSedes", listaSedes);
 		listaGlobal.put("sedeSeleccionada", sedeSeleccionada);
 		template = cfg.getTemplate("index.ftl");
+		StringWriter stringWriter = new StringWriter();
+		template.process(listaGlobal, stringWriter);
+		return stringWriter.toString();
+	}
+
+	public String generarIndex(String tipoConsulta, String segundaElecc, String terceraElecc,
+			List<String> listaNombreRecursos, String tipoInformacionVentasAutorNombreSeleccionado,
+			List<String> listaSedes, String sedeSeleccionada, List<String> listaDatos) throws TemplateNotFoundException,
+			MalformedTemplateNameException, ParseException, IOException, TemplateException {
+		Map<String, Object> listaGlobal = new HashMap<String, Object>();
+		listaGlobal.put("tipoConsulta", tipoConsulta);
+		listaGlobal.put("tipoInfoConcreta", segundaElecc);
+		listaGlobal.put("datosSolicitados", terceraElecc);
+		listaGlobal.put("listaNombreRecursos", listaNombreRecursos);
+		listaGlobal.put("NombreRecurso", tipoInformacionVentasAutorNombreSeleccionado);
+		listaGlobal.put("listaNombreSedes", listaSedes);
+		listaGlobal.put("sedeSeleccionada", sedeSeleccionada);
+		listaGlobal.put("listaDatos", listaDatos);
+		template = cfg.getTemplate("index.ftl");
+		template.setOutputEncoding("UTF-8");
+		StringWriter stringWriter = new StringWriter();
+		template.process(listaGlobal, stringWriter);
+		return stringWriter.toString();
+	}
+
+	public String generarIndex(String tipoConsulta, String segundaElecc, String terceraElecc,
+			List<String> listaNombreRecursos, String tipoInformacionVentasAutorNombreSeleccionado,
+			List<String> listaSedes, String sedeSeleccionada, String listaDatos) throws TemplateNotFoundException,
+			MalformedTemplateNameException, ParseException, IOException, TemplateException {
+		Map<String, Object> listaGlobal = new HashMap<String, Object>();
+		listaGlobal.put("tipoConsulta", tipoConsulta);
+		listaGlobal.put("tipoInfoConcreta", segundaElecc);
+		listaGlobal.put("datosSolicitados", terceraElecc);
+		listaGlobal.put("listaNombreRecursos", listaNombreRecursos);
+		listaGlobal.put("NombreRecurso", tipoInformacionVentasAutorNombreSeleccionado);
+		listaGlobal.put("listaNombreSedes", listaSedes);
+		listaGlobal.put("sedeSeleccionada", sedeSeleccionada);
+		listaGlobal.put("listaDatos", listaDatos);
+		template = cfg.getTemplate("index.ftl");
+		template.setOutputEncoding("UTF-8");
+		StringWriter stringWriter = new StringWriter();
+		template.process(listaGlobal, stringWriter);
+		return stringWriter.toString();
+	}
+
+
+
+	public String generarIndex(String tipoConsulta, String segundaElecc, String terceraElecc,
+			List<String> listaNombreRecursos, String tipoInformacionVentasAutorNombreSeleccionado,
+			String sedeSeleccionada,
+			List<String> listaDatos) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
+		Map<String, Object> listaGlobal = new HashMap<String, Object>();
+		listaGlobal.put("tipoConsulta", tipoConsulta);
+		listaGlobal.put("tipoInfoConcreta", segundaElecc);
+		listaGlobal.put("datosSolicitados", terceraElecc);
+		listaGlobal.put("listaNombreRecursos", listaNombreRecursos);
+		listaGlobal.put("NombreRecurso", tipoInformacionVentasAutorNombreSeleccionado);
+		listaGlobal.put("sedeSeleccionada", sedeSeleccionada);
+		listaGlobal.put("listaDatos", listaDatos);
+		template = cfg.getTemplate("index.ftl");
+		template.setOutputEncoding("UTF-8");
 		StringWriter stringWriter = new StringWriter();
 		template.process(listaGlobal, stringWriter);
 		return stringWriter.toString();

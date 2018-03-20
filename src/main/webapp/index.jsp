@@ -1,13 +1,9 @@
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
+<html lang="es">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta charset="UTF-8">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
 <title>Eurohelp Consulting</title>
-<meta name="description"
-	content="Página orientada a la seleccion de personal">
 <!-- Progress bar -->
 <script
 	src="https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
@@ -57,8 +53,7 @@
 <script src="<%=request.getContextPath()%>/js/sweetalert2.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/sweetalert2.min.css">
 <script src="<%=request.getContextPath()%>/js/GestorWeb.js"></script>
-<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
-
+<script src="<%=request.getContextPath()%>/js/GestorTabla.js"></script>
 <script>
 	$.post('ServGeneradorIndex', function(data) {
 		$('#pageContent').append(data);
@@ -72,19 +67,13 @@
 			<nav class="navbar navbar-default">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						<a class="navbar-brand"> Eurohelp Consulting </a>
+						<a class="navbar-brand">Eurohelp Consulting</a>
 					</div>
 				</div>
 			</nav>
 		</div>
 		<div class="pageContent" id="pageContent"></div>
-		<div class="buttonSubmitClass">
-				<input type="submit" class="btn btn-primary" value="Ejecutar"
-					onclick="getData()">
-			</div>
-			
 		<div class="footer"></div>
 	</div>
-	
 </body>
 </html>
