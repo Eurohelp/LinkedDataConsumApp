@@ -85,7 +85,7 @@ public class ServGeneradorIndex extends HttpServlet {
 			}
 		} 
 		else if ((tipoConsulta.equalsIgnoreCase("Ventas") || tipoConsulta.equalsIgnoreCase("Datos"))
-				&& tipoRecursoSobreElQueSeSolicitaInformacion != null) {
+				&& tipoRecursoSobreElQueSeSolicitaInformacion != null && tipoSede==null) {//mirar mirarsawfwfwfwfwfwfwfwfwfwfwfwfwfwfwfwfwfwfwfwfwfwfwfwfwfwfwfdk
 			if(tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Autor") && tipoInformacionSolicitada==null){
 				try {
 					responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion);
@@ -109,7 +109,8 @@ public class ServGeneradorIndex extends HttpServlet {
 				} catch (RepositoryException | MalformedQueryException | QueryEvaluationException | TemplateException e) {
 					e.printStackTrace();
 				}
-			} else {//Aqui entra si se selecciona libro para que salgan los titulos
+			} 
+		else if(tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Libro") && tipoSede==null) {//Aqui entra si se selecciona libro para que salgan los titulos
 				try {
 					listaNombreLibros = stardog.getBooksNames();
 					responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion,
@@ -121,11 +122,10 @@ public class ServGeneradorIndex extends HttpServlet {
 		} 
 		else if ((tipoConsulta.equalsIgnoreCase("Ventas") || tipoConsulta.equalsIgnoreCase("Datos"))
 				&& tipoRecursoSobreElQueSeSolicitaInformacion != null
-				&& (tipoSede != null || tipoInformacionSolicitada != null)) {
+				&& (tipoSede != null || tipoInformacionSolicitada != null) && tipoSede==null) {
 			if (tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Libro") && tipoInformacionSolicitada != null) {
 				try {// Si se selecciona libro hay que mostrar la lista de
 					//lista de nombres de autores
-					
 					responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion,
 							listaNombreLibros);
 				} catch (TemplateException e) {
@@ -133,148 +133,32 @@ public class ServGeneradorIndex extends HttpServlet {
 				}
 			} 
 		}
-
-		// } else if (tipoConsulta.equalsIgnoreCase("Ventas") &&
-		// tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Autor")
-		// && tipoInformacionSolicitada.equalsIgnoreCase("Nombre")
-		// && tipoSede == null) {
-		// try {
-		// listaNombreAutor = stardog.getAuthorsNames();
-		// responseData = generadorIndex.generarIndex(tipoConsulta,
-		// tipoRecursoSobreElQueSeSolicitaInformacion,
-		// tipoInformacionSolicitada, listaNombreAutor);
-		// } catch (RepositoryException | MalformedQueryException |
-		// QueryEvaluationException | TemplateException e) {
-		// e.printStackTrace();
-		// }
-		// } else if (tipoConsulta.equalsIgnoreCase("Ventas") &&
-		// tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Autor")
-		// && tipoInformacionSolicitada.equalsIgnoreCase("Nombre")
-		// && tipoSede.equals("Sede")) {
-		// try {
-		// listaSedes = stardog.getSedesNames();
-		// responseData = generadorIndex.generarIndex(tipoConsulta,
-		// tipoRecursoSobreElQueSeSolicitaInformacion,
-		// tipoInformacionSolicitada, listaNombreAutor,
-		// nombreRecursoSeleccionado, listaSedes);
-		// } catch (RepositoryException | MalformedQueryException |
-		// QueryEvaluationException | TemplateException e) {
-		// e.printStackTrace();
-		// }
-		// } else if (tipoConsulta.equalsIgnoreCase("Ventas") &&
-		// tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Autor")
-		// && tipoInformacionSolicitada.equalsIgnoreCase("Nombre")
-		// && tipoSede.equals("Sede")
-		// && tipoInformacionVentasAutorNombreSedeSeleccionado != null) {
-		// try {
-		// responseData = generadorIndex.generarIndex(tipoConsulta,
-		// tipoRecursoSobreElQueSeSolicitaInformacion,
-		// tipoInformacionSolicitada, listaNombreAutor,
-		// nombreRecursoSeleccionado, listaSedes,
-		// tipoInformacionVentasAutorNombreSedeSeleccionado);
-		//
-		// } catch (TemplateException e) {
-		// e.printStackTrace();
-		// }
-		// }
-		// // Ahora para libros
-		// else if (tipoConsulta.equalsIgnoreCase("Ventas") &&
-		// (tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Libro"))
-		// && tipoInformacionSolicitada == null) { // Si se
-		// // selecciona
-		// // ventas y
-		// // autor/cantante
-		// try {
-		// System.out.println(1);
-		//
-		// responseData = generadorIndex.generarIndex(tipoConsulta,
-		// tipoRecursoSobreElQueSeSolicitaInformacion);
-		// } catch (TemplateException e) {
-		// e.printStackTrace();
-		// }
-		// } else if (tipoConsulta.equalsIgnoreCase("Ventas") &&
-		// tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Libro")
-		// && tipoInformacionSolicitada.equalsIgnoreCase("Nombre")
-		// && tipoSede == null) {
-		// try {
-		// System.out.println(2);
-		//
-		// listaNombreLibros = stardog.getBooksNames();
-		// responseData = generadorIndex.generarIndex(tipoConsulta,
-		// tipoRecursoSobreElQueSeSolicitaInformacion,
-		// tipoInformacionSolicitada, listaNombreLibros);
-		// } catch (RepositoryException | MalformedQueryException |
-		// QueryEvaluationException | TemplateException e) {
-		// e.printStackTrace();
-		// }
-		// } else if (tipoConsulta.equalsIgnoreCase("Ventas") &&
-		// tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Libro")
-		// && tipoInformacionSolicitada.equalsIgnoreCase("Nombre")
-		// && tipoSede.equals("Sede")
-		// && tipoInformacionVentasAutorNombreSedeSeleccionado == null) {
-		// try {
-		// System.out.println(3);
-		//
-		// listaSedes = stardog.getSedesNames();
-		// responseData = generadorIndex.generarIndex(tipoConsulta,
-		// tipoRecursoSobreElQueSeSolicitaInformacion,
-		// tipoInformacionSolicitada, listaNombreLibros,
-		// nombreRecursoSeleccionado, listaSedes);
-		// } catch (RepositoryException | MalformedQueryException |
-		// QueryEvaluationException | TemplateException e) {
-		// e.printStackTrace();
-		// }
-		// } else if (tipoConsulta.equalsIgnoreCase("Ventas") &&
-		// tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Libro")
-		// && tipoInformacionSolicitada.equalsIgnoreCase("Nombre")
-		// && tipoSede.equals("Sede")
-		// && tipoInformacionVentasAutorNombreSedeSeleccionado != null) {
-		// try { // si fin no se cambia la tabla
-		// System.out.println(4);
-		// if (tipoInformacionVentasAutorNombreSedeSeleccionado != "Totales") {
-		// List<String> listaDatos =
-		// stardog.getDatosNumVentasTotalesEnSedeConcretaResource(
-		// nombreRecursoSeleccionado,
-		// tipoInformacionVentasAutorNombreSedeSeleccionado);
-		// if (listaDatos == null) {
-		// responseData = "No hay datos que recuperar: \nNo se han vendido
-		// ejemplares de "
-		// + nombreRecursoSeleccionado + " en la sede de "
-		// + tipoInformacionVentasAutorNombreSedeSeleccionado;
-		// } else {
-		// responseData = generadorIndex.generarIndex(tipoConsulta,
-		// tipoRecursoSobreElQueSeSolicitaInformacion,
-		// tipoInformacionSolicitada, listaNombreLibros,
-		// nombreRecursoSeleccionado,
-		// tipoInformacionVentasAutorNombreSedeSeleccionado,listaDatos);
-		// }
-		// }
-		// } catch (RepositoryException | MalformedQueryException |
-		// QueryEvaluationException
-		// | TupleQueryResultHandlerException |
-		// UnsupportedQueryResultFormatException | TemplateException e) {
-		// e.printStackTrace();
-		// }
-		// }
-		// else if(tipoConsulta.equalsIgnoreCase("Ventas") &&
-		// tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Libro")
-		// && tipoInformacionSolicitada.equalsIgnoreCase("Nombre")
-		// && tipoSede.equals("Totales")
-		// && tipoInformacionVentasAutorNombreSedeSeleccionado == null){
-		// List<String> listaDatos;
-		// try {
-		// listaDatos =
-		// stardog.getDatosNumVentasTotalesEnTodasLasSedesResource(nombreRecursoSeleccionado);
-		// responseData = generadorIndex.generarIndex(tipoConsulta,
-		// tipoRecursoSobreElQueSeSolicitaInformacion,
-		// tipoInformacionSolicitada, listaNombreLibros,
-		// nombreRecursoSeleccionado,
-		// tipoSede, listaDatos);
-		// } catch (RepositoryException | MalformedQueryException |
-		// QueryEvaluationException | TemplateException e) {
-		// e.printStackTrace();
-		// }
-		// }
+		
+		//Se ha seleccionado ventas o datos y encima para libro se ha seleccionado el tipo de sede
+		else if ((tipoConsulta.equalsIgnoreCase("Ventas") || tipoConsulta.equalsIgnoreCase("Datos"))
+				&& tipoRecursoSobreElQueSeSolicitaInformacion != null
+				&& (tipoSede != null || tipoInformacionSolicitada != null)) {
+			System.out.println("me estas vacilando porque no entra");
+			if (tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Libro") && tipoInformacionSolicitada == null && tipoSede!=null) {
+				//Si ya se ha seleccionado el tipo de sede
+				try {// Si se selecciona libro hay que mostrar la lista de
+					//lista de nombres de autores
+					if(tipoSede.equalsIgnoreCase("Totales")){//Aqui acaba
+					List<String> datosFinales = stardog.getDatosNumVentasTotalesEnTodasLasSedesResource(nombreRecursoSeleccionado);
+					responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion,
+							listaNombreLibros, nombreRecursoSeleccionado, tipoSede, datosFinales);
+					}
+					else if(!tipoSede.equalsIgnoreCase("Totales")){
+						listaSedes=stardog.getSedesNames();
+						responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion,
+								listaNombreLibros, nombreRecursoSeleccionado, tipoSede, listaSedes);
+					}
+				} catch (TemplateException | RepositoryException | MalformedQueryException | QueryEvaluationException e) {
+					e.printStackTrace();
+				}
+			} 
+		}
+		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().print(responseData);

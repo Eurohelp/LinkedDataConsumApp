@@ -44,10 +44,10 @@
 </#if>
 	<#-- Si ya se ha seleccionado el tipo de consulta y sobre qué tipo de datos desea obtener infomacion-->
 <#if tipoConsulta?has_content && tipoInfoConcreta?has_content && !datosSolicitados?has_content && !NombreRecurso?has_content>
-<#if tipoInfoConcreta=="Libro" && listaNombreRecursos?has_content>
+<#if tipoInfoConcreta=="Libro" && listaNombreRecursos?has_content && !listaNombreSedes?has_content && !tipoSede?has_content>
 <#if tipoConsulta == "Ventas">
 <div class="panel list-group">
-		     ¿Qué deseas conssdvvvvvvvvvultar?
+		     ¿Qué deseas conssxxxxxxxxxxxxxltar?
          <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 			<option value="Ventas" selected>Ventas</option>
 			<option value="Datos">Datos</option>
@@ -110,8 +110,7 @@ Título:
 
 <#-- Se ha seleccionado de la lista de libros un titulo o de la lista de autores un lugar de nacimiento o un nombre de autor-->
 <#if tipoConsulta?has_content && tipoInfoConcreta?has_content && !datosSolicitados?has_content && (listaNombreRecursos?has_content || NombreRecurso?has_content)>
-Entra aqui mishel bien
-<#if tipoSede?has_content && tipoInfoConcreta=="Libro" && NombreRecurso?has_content><#--Corresponde al libro-->
+<#if tipoSede?has_content && tipoInfoConcreta=="Libro" && NombreRecurso?has_content && tipoSede?has_content><#--Corresponde al libro-->
 ¿Qué deseas consuldsssssssssssstar?MIKELLLLLLL
          <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 			<option value="Ventas" selected>Ventas</option>
@@ -129,10 +128,40 @@ Entra aqui mishel bien
 		 <#if NombreRecurso == "${nombre}">
  					<option value="${nombre}" selected>${nombre}</option>
  		<#else>
- 		 			<option value="${nombre}" selected>${nombre}</option>
- 		</#if>
+ 		 			<option value="${nombre}">${nombre}</option>
+ 		</#if></#list>
 					</select>
-</#list>
+
+¿De qué sede quieres recibir la información?
+<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede">
+<#if tipoSede=="Sede">
+						<option value="Sede" selected>Sede</option>
+						</select>
+						<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede-Sede">
+								 <#list listaNombreSedes as nombreSede>
+								 						<option value="${nombreSede}" selected>${nombreSede}</option>
+								 
+						</#list>
+</select>
+						<#else><#--Si selecciona ventas/datos libro sede totales-->
+						<option value="Totales" selected>Todas las sedes</option>
+						</select>
+						<div class="queryResults" id="queryResults"><table id="resultTable" name="resultTable">
+	<tr>
+    <th>Libro</th>
+    <th>TotalVentas</th>
+  </tr>
+   <tr>
+   <#list listaNombreSedes as dato>
+    <td>${dato}</td>
+  </#list>
+  </tr>
+	</table>
+	</div>  	
+</#if>
+					
+
+
 <#elseif tipoInfoConcreta=="Autor" && listaNombreRecursos?has_content>
 ¿Qué deseas consuldsssssssssssstar?
          <select class="form-control" id="tipoInformacion" name="tipoInformacion">
