@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.openrdf.query.MalformedQueryException;
 import org.openrdf.query.QueryEvaluationException;
@@ -13,6 +14,10 @@ public class main {
 	public static void main(String[] args) throws TupleQueryResultHandlerException, RepositoryException, MalformedQueryException, QueryEvaluationException, UnsupportedQueryResultFormatException, IOException {
 		Stardog st = new Stardog();
 	//	st.getDatosNumVentasTotalesEnSedeConcretaResource("Novelas ejemplares", "Alava");
+		ArrayList<String> sty= (ArrayList<String>) st.getBirthPlaces();
+		for(String stsy : sty){
+			System.out.println(stsy);
+		}
 	}
 
 }

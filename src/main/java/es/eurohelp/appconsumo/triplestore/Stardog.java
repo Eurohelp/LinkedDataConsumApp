@@ -28,6 +28,7 @@ import org.openrdf.query.resultio.UnsupportedQueryResultFormatException;
 import org.openrdf.repository.Repository;
 import org.openrdf.repository.RepositoryConnection;
 import org.openrdf.repository.RepositoryException;
+import org.openrdf.repository.sparql.SPARQLRepository;
 import org.openrdf.rio.RDFFormat;
 import org.openrdf.rio.RDFParseException;
 
@@ -118,7 +119,7 @@ public class Stardog {
 			result = result.replace("numTotal=\"", "");
 			result = result.replace("\"", "");
 			result = result.replace("^^<http://www.w3.org/2001/XMLSchema#integer>]", "");
-			String [] resultados = result.split(";");
+			String[] resultados = result.split(";");
 			listaRecursos = Arrays.asList(resultados);
 		}
 		System.out.println("El resultado del nombre es -->" + result);
@@ -138,19 +139,19 @@ public class Stardog {
 		TupleQueryResult queryResults = query.evaluate();
 		while (queryResults.hasNext()) {
 			result = queryResults.next().toString();
-			if(!result.contains("numTotal=\"0\"")){
-			System.out.println(result);
-			result = result.replace("[labelRecurso=\"", "");
-			result = result.replace("\"^^<http://www.w3.org/2001/XMLSchema#string>", "");
-			result = result.replace("[", "");
-			result = result.replace("labelSede=\"", "");
-			result = result.replace("numTotal=\"", "");
-			result = result.replace("\"", "");
-			result = result.replace("^^<http://www.w3.org/2001/XMLSchema#integer>]", "");
+			if (!result.contains("numTotal=\"0\"")) {
+				System.out.println(result);
+				result = result.replace("[labelRecurso=\"", "");
+				result = result.replace("\"^^<http://www.w3.org/2001/XMLSchema#string>", "");
+				result = result.replace("[", "");
+				result = result.replace("labelSede=\"", "");
+				result = result.replace("numTotal=\"", "");
+				result = result.replace("\"", "");
+				result = result.replace("^^<http://www.w3.org/2001/XMLSchema#integer>]", "");
 
-			String[] resultados = result.split(";");
-			listaDatos = Arrays.asList(resultados);
-			}else {
+				String[] resultados = result.split(";");
+				listaDatos = Arrays.asList(resultados);
+			} else {
 				listaDatos = null;
 			}
 		}
@@ -196,7 +197,7 @@ public class Stardog {
 			throws RepositoryException, MalformedQueryException, QueryEvaluationException {
 		List<String> nombreAutores = new ArrayList<String>();
 		String nombreAutor = "";
-		String queryText = "SELECT distinct ?labelRecurso where{ graph<http://lod.eurohelp.es/graph/novelas>{?recursoAutorDbpedia <http://schema.org/author> ?recurso. ?datosVenta <http://lod.eurohelp.es/def/product> ?recurso. ?recurso <http://schema.org/name> ?labelRecurso.}}";
+		String queryText = "select distinct ?nombreAutor where{graph<http://lod.eurohelp.es/graph/novelas>{?recursoDbpedia <http://www.w3.org/2002/07/owl#sameAs> ?recursoPropio.   SERVICE <http://es.dbpedia.org/sparql> { OPTIONAL{?recursoDbpedia <http://es.dbpedia.org/property/autor> ?autor. ?autor <http://www.w3.org/2000/01/rdf-schema#label> ?nombreAutor.}}}}";
 		TupleQuery query = repository.prepareTupleQuery(QueryLanguage.SPARQL, queryText);
 		TupleQueryResult queryResults = query.evaluate();
 		while (queryResults.hasNext()) {
@@ -227,6 +228,43 @@ public class Stardog {
 			}
 		}
 		return nombreAutores;
+	}
+
+	public List<String> getBirthPlaces() throws RepositoryException, MalformedQueryException, QueryEvaluationException {
+		List<String> listaLugaresNacimientoAutores = new ArrayList<String>();
+		List<String> listaAutores= new ArrayList<String>();
+		Repository repo = new SPARQLRepository("http://dbpedia.org/sparql");
+		repo.initialize();
+		RepositoryConnection repoConn = repo.getConnection();
+		String queryStardog ="select distinct ?s where { graph  <http://lod.eurohelp.es/graph/novelas>{ ?libro ?p ?o . ?s <http://schema.org/author> ?libro.} }";
+		TupleQuery query = repository.prepareTupleQuery(QueryLanguage.SPARQL, queryStardog);
+		TupleQueryResult queryResults = query.evaluate();
+		while (queryResults.hasNext()) {
+			String nombreAutor = queryResults.next().toString();
+			nombreAutor = nombreAutor.replace("[s=","");
+			nombreAutor = nombreAutor.replace("]","");
+
+			System.out.println(nombreAutor);
+			if (!listaAutores.contains(nombreAutor)) {
+				listaAutores.add(nombreAutor);
+			}
+		}
+		for (String autor: listaAutores){
+			String queryDbpedia="select ?labelSitio where{<"+autor+"> <http://dbpedia.org/ontology/birthPlace> ?sitio. optional{?sitio ?x <http://schema.org/Country>} . ?sitio <http://www.w3.org/2000/01/rdf-schema#label> ?labelSitio. FILTER (lang(?labelSitio) = 'es')} limit 1";
+			TupleQuery tupleQueryStardog = repoConn.prepareTupleQuery(QueryLanguage.SPARQL, queryDbpedia);
+			queryResults = tupleQueryStardog.evaluate();
+
+			while (queryResults.hasNext()) {
+				String lugarNacimiento = queryResults.next().toString();
+				lugarNacimiento=lugarNacimiento.replace("[labelSitio=\"", "");
+				lugarNacimiento=lugarNacimiento.replace("\"@es]", "");
+				if (!listaLugaresNacimientoAutores.contains(lugarNacimiento)) {
+					listaLugaresNacimientoAutores.add(lugarNacimiento);
+				}
+			}
+		}
+		
+		return listaLugaresNacimientoAutores;
 	}
 
 	public List<String> getSedesNames() throws RepositoryException, MalformedQueryException, QueryEvaluationException {

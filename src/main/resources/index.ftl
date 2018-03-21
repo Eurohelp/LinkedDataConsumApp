@@ -1,7 +1,7 @@
 <form name="form" id="form">
 		<#if tipoConsulta?has_content &&  tipoConsulta == "null" && !tipoInfoConcreta?has_content>
      <div class="panel list-group">
-     ¿Qué deseas consultar?
+     ï¿½Quï¿½ deseas consultar?
          <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 			<option value="Ventas">Ventas</option>
 			<option value="Datos">Datos</option>
@@ -9,7 +9,7 @@
 		</#if>
 		<#if tipoConsulta?has_content &&  tipoConsulta == "Ventas" && !tipoInfoConcreta?has_content>
 		<div class="panel list-group">
-		¿Qué deseas consultar?
+		ï¿½Quï¿½ deseas consultar?
          <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 			<option value="Ventas" selected>Ventas</option>
 			<option value="Datos">Datos</option>
@@ -307,7 +307,7 @@
 						</#if>
 </#list>
 	</select>
-		<div class="queryResults" id="queryResults"><table id="resultTable" name="resultTable">
+	<div class="queryResults" id="queryResults"><table id="resultTable" name="resultTable">
 	<tr>
     <th>Libro</th>
     <th>Sede</th>
