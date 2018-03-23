@@ -67,7 +67,7 @@ public class ServGeneradorIndex extends HttpServlet {
 		String tipoInformacionSolicitada = request.getParameter("tipoInformacion-Ventas-Autor-Cantante");
 		String tipoSede = request.getParameter("tipoInformacion-Ventas-Autor-Nombre-Sede");
 		String nombreRecursoSeleccionado = request.getParameter("tipoInformacion-Ventas-Autor-Nombre");
-		String tipoInformacionVentasAutorNombreSedeSeleccionado = request
+		String nombreSedeSeleccionada = request
 				.getParameter("tipoInformacion-Ventas-Autor-Nombre-Sede-Sede");
 		String autorSeleccionadoPorLugarNac = request
 				.getParameter("tipoInformacion-Datos-LugarNac-Autor");
@@ -114,6 +114,22 @@ public class ServGeneradorIndex extends HttpServlet {
 					e.printStackTrace();
 				}
 			} 
+		else if(tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Autor") && tipoInformacionSolicitada!=null && nombreRecursoSeleccionado!=null){
+			try {//si se selecciona autor hay que cargar los menus de autor
+				if(tipoInformacionSolicitada.equalsIgnoreCase("NacidoEn")){
+					listaLugaresNacimiento = stardog.getBirthPlaces();
+					responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion, tipoInformacionSolicitada,
+							listaLugaresNacimiento, nombreRecursoSeleccionado);
+				}
+					else if(tipoInformacionSolicitada.equalsIgnoreCase("Nombre")){
+					listaNombreAutor = stardog.getAuthorsNames();
+					responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion, tipoInformacionSolicitada,
+							listaNombreAutor, nombreRecursoSeleccionado);
+				}
+			} catch (RepositoryException | MalformedQueryException | QueryEvaluationException | TemplateException e) {
+				e.printStackTrace();
+			}
+		}
 		else if(tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Libro") && tipoSede==null && nombreRecursoSeleccionado==null) {//Aqui entra si se selecciona libro para que salgan los titulos
 				try {
 					listaNombreLibros = stardog.getBooksNames();
@@ -211,17 +227,33 @@ public class ServGeneradorIndex extends HttpServlet {
 				//Si ya se ha seleccionado el tipo de sede
 				try {// Si se selecciona libro hay que mostrar la lista de
 					//lista de nombres de autores
-					if(tipoSede.equalsIgnoreCase("Totales")){//Aqui acaba
+					if(tipoSede.equalsIgnoreCase("Totales")){//Aqui acaba	
 					List<String> datosFinales = stardog.getDatosNumVentasTotalesEnTodasLasSedesResource(nombreRecursoSeleccionado);
+					if(datosFinales.size()>1){
 					responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion,
 							listaNombreLibros, nombreRecursoSeleccionado, tipoSede, datosFinales);
 					}
-					else if(!tipoSede.equalsIgnoreCase("Totales")){
+					else{//Si no se ha vendido ningun ejemplar
+						datosFinales = new ArrayList<>();
+						datosFinales.add(nombreRecursoSeleccionado);
+						datosFinales.add("0");
+						responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion,
+								listaNombreLibros, nombreRecursoSeleccionado, tipoSede, datosFinales);
+					}
+					}
+					else if(!tipoSede.equalsIgnoreCase("Totales")){//Si selecciona ventas libro y se ha seleccionado sede
 						listaSedes=stardog.getSedesNames();
+						if(nombreSedeSeleccionada==null){
 						responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion,
 								listaNombreLibros, nombreRecursoSeleccionado, tipoSede, listaSedes);
+						}
+						else{
+							List<String> datosFinales = stardog.getDatosNumVentasTotalesEnSedeConcretaResource(nombreRecursoSeleccionado, nombreSedeSeleccionada);
+							responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion,
+									listaNombreLibros, nombreRecursoSeleccionado, tipoSede, listaSedes, nombreSedeSeleccionada, datosFinales);
+						}
 					}
-				} catch (TemplateException | RepositoryException | MalformedQueryException | QueryEvaluationException e) {
+				} catch (TemplateException | RepositoryException | MalformedQueryException | QueryEvaluationException | TupleQueryResultHandlerException | UnsupportedQueryResultFormatException e) {
 					e.printStackTrace();
 				}
 			} 

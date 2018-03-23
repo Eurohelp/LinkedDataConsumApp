@@ -75,7 +75,7 @@ public class GeneradorIndex {
 		return stringWriter.toString();
 	}
 
-	// Si se selecciona libro y titulo y sede concreta
+	// Si se selecciona libro y titulo y tipo sede
 	public String generarIndex(String tipoConsulta, String segundaElecc, List<String> listaNombreRecursos,
 			String recursoSeleccionado, String tipoSede, List<String> listaSedes) throws TemplateNotFoundException,
 			MalformedTemplateNameException, ParseException, IOException, TemplateException {
@@ -91,22 +91,6 @@ public class GeneradorIndex {
 		template.process(listaGlobal, stringWriter);
 		return stringWriter.toString();
 	}
-
-//	// Si se selecciona libro y titulo y todas las sedes
-//	public String generarIndex(String tipoConsulta, String segundaElecc, List<String> listaNombreRecursos,
-//			String recursoSeleccionado, String tipoSede) throws TemplateNotFoundException,
-//			MalformedTemplateNameException, ParseException, IOException, TemplateException {
-//		Map<String, Object> listaGlobal = new HashMap<String, Object>();
-//		listaGlobal.put("tipoConsulta", tipoConsulta);
-//		listaGlobal.put("tipoInfoConcreta", segundaElecc);
-//		listaGlobal.put("listaNombreRecursos", listaNombreRecursos);
-//		listaGlobal.put("NombreRecurso", recursoSeleccionado);
-//		listaGlobal.put("tipoSede", tipoSede);
-//		template = cfg.getTemplate("index2.ftl");
-//		StringWriter stringWriter = new StringWriter();
-//		template.process(listaGlobal, stringWriter);
-//		return stringWriter.toString();
-//	}
 
 	//Genera indice para libro a partir de seleccion de nombre o lugar nacimiento
 	public String generarIndex(String tipoConsulta, String segundaElecc, String tipoInformacionSolicitada, List<String> listaNombreRecursos) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
@@ -151,6 +135,19 @@ public class GeneradorIndex {
 		StringWriter stringWriter = new StringWriter();
 		template.process(listaGlobal, stringWriter);
 		return stringWriter.toString();
-	}	
-	
+	}
+
+	public String generarIndex(String tipoConsulta, String segundaElecc, String tipoInformacionSolicitada, List<String> listaNombreRecursos, String recursoSeleccionado) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
+		Map<String, Object> listaGlobal = new HashMap<String, Object>();
+		listaGlobal.put("tipoConsulta", tipoConsulta);
+		listaGlobal.put("tipoInfoConcreta", segundaElecc);
+		listaGlobal.put("tipoDatoRecursoSolicitado", tipoInformacionSolicitada);
+		listaGlobal.put("listaNombreRecursos", listaNombreRecursos);
+		listaGlobal.put("NombreRecurso", recursoSeleccionado);
+		template = cfg.getTemplate("index2.ftl");
+		StringWriter stringWriter = new StringWriter();
+		template.process(listaGlobal, stringWriter);
+		return stringWriter.toString();
+	}
+
 }
