@@ -19,6 +19,8 @@ import org.openrdf.query.TupleQueryResultHandlerException;
 import org.openrdf.query.resultio.UnsupportedQueryResultFormatException;
 import org.openrdf.repository.RepositoryException;
 
+import com.sun.media.sound.PCMtoPCMCodec;
+
 import es.eurohelp.appconsumo.data.GeneradorIndex;
 import es.eurohelp.appconsumo.triplestore.Stardog;
 import freemarker.template.TemplateException;
@@ -32,6 +34,7 @@ public class ServGeneradorIndex extends HttpServlet {
 	private static List<String> listaNombreLibros = new ArrayList<String>();
 	private static List<String> listaSedes = new ArrayList<String>();
 	private static List<String> listaLugaresNacimiento = new ArrayList<String>();
+	private static List<String> listaAutoresPorLugaresNacimiento = new ArrayList<String>();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -56,7 +59,6 @@ public class ServGeneradorIndex extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println();
 		GeneradorIndex generadorIndex = new GeneradorIndex();
 		Stardog stardog = new Stardog();
 		String tipoConsulta = request.getParameter("tipoInformacion");
@@ -67,6 +69,8 @@ public class ServGeneradorIndex extends HttpServlet {
 		String nombreRecursoSeleccionado = request.getParameter("tipoInformacion-Ventas-Autor-Nombre");
 		String tipoInformacionVentasAutorNombreSedeSeleccionado = request
 				.getParameter("tipoInformacion-Ventas-Autor-Nombre-Sede-Sede");
+		String autorSeleccionadoPorLugarNac = request
+				.getParameter("tipoInformacion-Datos-LugarNac-Autor");
 
 		String responseData = "";
 		if (tipoConsulta == null) {// Si es la primera vez que se ejecuta
@@ -94,7 +98,7 @@ public class ServGeneradorIndex extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
-		else if (tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Autor") && tipoInformacionSolicitada!=null) {
+		else if (tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Autor") && tipoInformacionSolicitada!=null && nombreRecursoSeleccionado==null) {
 				try {//si se selecciona autor hay que cargar los menus de autor
 					if(tipoInformacionSolicitada.equalsIgnoreCase("NacidoEn")){
 						listaLugaresNacimiento = stardog.getBirthPlaces();
@@ -110,7 +114,7 @@ public class ServGeneradorIndex extends HttpServlet {
 					e.printStackTrace();
 				}
 			} 
-		else if(tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Libro") && tipoSede==null) {//Aqui entra si se selecciona libro para que salgan los titulos
+		else if(tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Libro") && tipoSede==null && nombreRecursoSeleccionado==null) {//Aqui entra si se selecciona libro para que salgan los titulos
 				try {
 					listaNombreLibros = stardog.getBooksNames();
 					responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion,
@@ -119,6 +123,72 @@ public class ServGeneradorIndex extends HttpServlet {
 					e.printStackTrace();
 				}
 			}//Si se selecciona ventas o datos y el tipo de datos
+		else if(tipoSede==null && tipoConsulta.equalsIgnoreCase("Datos") && nombreRecursoSeleccionado!=null){//Si se selecciona datos y titulo libro
+			List<String> datosGlobalesRecurso;
+			if(tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Libro") ){
+			try {
+				datosGlobalesRecurso = stardog.getAllBookData(nombreRecursoSeleccionado);
+				if(datosGlobalesRecurso.size()>0){
+				responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion,tipoInformacionSolicitada, listaNombreLibros, nombreRecursoSeleccionado, datosGlobalesRecurso);
+				}
+				else{//Si no hay datos de ese libro
+					responseData = "No hay datos que recuperar: \n No hay información sobre ese libro";
+				}
+			} catch (RepositoryException | MalformedQueryException | QueryEvaluationException | TemplateException e) {
+				e.printStackTrace();
+			}}
+			else if(tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Autor") && autorSeleccionadoPorLugarNac==null){
+				try {
+					if(tipoInformacionSolicitada.equalsIgnoreCase("Nombre")){
+						datosGlobalesRecurso = stardog.getAllAuthorData(nombreRecursoSeleccionado);
+					if(datosGlobalesRecurso.size()>0){
+					responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion,
+							tipoInformacionSolicitada,
+							listaNombreAutor, nombreRecursoSeleccionado, datosGlobalesRecurso);
+					}
+					else{//Si no hay datos de ese libro
+						responseData = "No hay datos que recuperar: \n No se dispone de información adicional sobre ese autor";
+					}}
+					else if(tipoInformacionSolicitada.equalsIgnoreCase("NacidoEn")){//?sera aqui
+						listaNombreAutor = stardog.getAuthorsNames();
+						listaAutoresPorLugaresNacimiento = stardog.getAllAuthorsByBirthPlace(listaNombreAutor, nombreRecursoSeleccionado);
+						if(listaAutoresPorLugaresNacimiento.size()>0){
+						responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion, listaLugaresNacimiento, nombreRecursoSeleccionado,tipoInformacionSolicitada, listaAutoresPorLugaresNacimiento);
+						}
+						else{
+							responseData = "No hay datos que recuperar: \n No se dispone de información de autores nacidos en ese sitio.";
+						}
+					}
+				} catch (RepositoryException | MalformedQueryException | QueryEvaluationException | TemplateException e) {
+					e.printStackTrace();
+				}	
+			}		
+			else if(tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Autor") ){
+				try {
+					if(tipoInformacionSolicitada.equalsIgnoreCase("Nombre")){
+						datosGlobalesRecurso = stardog.getAllAuthorData(nombreRecursoSeleccionado);
+					if(datosGlobalesRecurso.size()>0){
+					responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion,
+							tipoInformacionSolicitada,
+							listaNombreAutor, nombreRecursoSeleccionado, datosGlobalesRecurso);
+					}
+					else{//Si no hay datos de ese libro
+						responseData = "No hay datos que recuperar: \n No se dispone de información adicional sobre ese autor";
+					}}
+					else if(tipoInformacionSolicitada.equalsIgnoreCase("NacidoEn") && autorSeleccionadoPorLugarNac!=null){//aquimishel
+						datosGlobalesRecurso = stardog.getAllAuthorData(autorSeleccionadoPorLugarNac);
+						if(datosGlobalesRecurso.size()>0){
+						responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion,  listaLugaresNacimiento, nombreRecursoSeleccionado, tipoInformacionSolicitada, listaNombreAutor, autorSeleccionadoPorLugarNac, datosGlobalesRecurso);
+						}
+						else{//Si no hay datos de ese libro
+							responseData = "No hay datos que recuperar: \n No se dispone de información adicional sobre ese autor";
+						}
+						}
+				} catch (RepositoryException | MalformedQueryException | QueryEvaluationException | TemplateException e) {
+					e.printStackTrace();
+				}	
+			}	
+		}
 		} 
 		else if ((tipoConsulta.equalsIgnoreCase("Ventas") || tipoConsulta.equalsIgnoreCase("Datos"))
 				&& tipoRecursoSobreElQueSeSolicitaInformacion != null
@@ -133,12 +203,10 @@ public class ServGeneradorIndex extends HttpServlet {
 				}
 			} 
 		}
-		
 		//Se ha seleccionado ventas o datos y encima para libro se ha seleccionado el tipo de sede
 		else if ((tipoConsulta.equalsIgnoreCase("Ventas") || tipoConsulta.equalsIgnoreCase("Datos"))
 				&& tipoRecursoSobreElQueSeSolicitaInformacion != null
 				&& (tipoSede != null || tipoInformacionSolicitada != null)) {
-			System.out.println("me estas vacilando porque no entra");
 			if (tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Libro") && tipoInformacionSolicitada == null && tipoSede!=null) {
 				//Si ya se ha seleccionado el tipo de sede
 				try {// Si se selecciona libro hay que mostrar la lista de
@@ -159,6 +227,7 @@ public class ServGeneradorIndex extends HttpServlet {
 			} 
 		}
 		
+		System.out.println(responseData + "vacio joder");
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().print(responseData);

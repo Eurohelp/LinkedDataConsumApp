@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
@@ -195,21 +196,64 @@ public class Stardog {
 
 	public List<String> getAuthorsNames()
 			throws RepositoryException, MalformedQueryException, QueryEvaluationException {
-		List<String> nombreAutores = new ArrayList<String>();
-		String nombreAutor = "";
-		String queryText = "select distinct ?nombreAutor where{graph<http://lod.eurohelp.es/graph/novelas>{?recursoDbpedia <http://www.w3.org/2002/07/owl#sameAs> ?recursoPropio.   SERVICE <http://es.dbpedia.org/sparql> { OPTIONAL{?recursoDbpedia <http://es.dbpedia.org/property/autor> ?autor. ?autor <http://www.w3.org/2000/01/rdf-schema#label> ?nombreAutor.}}}}";
-		TupleQuery query = repository.prepareTupleQuery(QueryLanguage.SPARQL, queryText);
+		List<String> listaRecursosDbpedia = new ArrayList<String>();
+		List<String> listaAutores= new ArrayList<String>();
+		Repository repo = new SPARQLRepository("http://es.dbpedia.org/sparql");
+		repo.initialize();
+		RepositoryConnection repoConn = repo.getConnection();
+		String queryStardog ="select distinct ?recursoDbpedia where{graph<http://lod.eurohelp.es/graph/novelas>{?recursoDbpedia <http://www.w3.org/2002/07/owl#sameAs> ?recursoPropio.}}";
+		TupleQuery query = repository.prepareTupleQuery(QueryLanguage.SPARQL, queryStardog);
+		TupleQueryResult queryResults = query.evaluate();
+		while (queryResults.hasNext()) {
+			String nombreAutor = queryResults.next().toString();
+			nombreAutor = nombreAutor.replace("[recursoDbpedia=","");
+			nombreAutor = nombreAutor.replace("]","");
+
+			System.out.println(nombreAutor);
+			if (!listaRecursosDbpedia.contains(nombreAutor)) {
+				listaRecursosDbpedia.add(nombreAutor);
+			}
+		}
+		for (String libro: listaRecursosDbpedia){
+			String queryDbpedia="SELECT ?nombreAutor where{ ?libro <http://es.dbpedia.org/property/autor> ?autor. ?autor <http://www.w3.org/2000/01/rdf-schema#label> ?nombreAutor. FILTER (?libro = <"+libro+">)} LIMIT 1";
+					TupleQuery tupleQueryStardog = repoConn.prepareTupleQuery(QueryLanguage.SPARQL, queryDbpedia);
+			queryResults = tupleQueryStardog.evaluate();
+
+			while (queryResults.hasNext()) {
+				String nombreAutor = queryResults.next().toString();
+				nombreAutor=nombreAutor.replace("[nombreAutor=\"", "");
+				nombreAutor=nombreAutor.replace("\"@es]", "");
+				if (!listaAutores.contains(nombreAutor)) {
+					listaAutores.add(nombreAutor);
+				}
+			}
+		}
+		return listaAutores;
+	}
+	
+	
+	
+	public List<String> getAllAuthorsByBirthPlace(List<String> listaAutores, String lugarNacimiento) throws RepositoryException, MalformedQueryException, QueryEvaluationException{
+		List<String> listaAutoresLugarNacimientoConcreto = new ArrayList<String>();
+		Repository repo = new SPARQLRepository("http://es.dbpedia.org/sparql");
+		repo.initialize();
+		RepositoryConnection repoConn = repo.getConnection();
+		String nombreAutor="";
+		for (String autor : listaAutores){
+		String queryStardog ="select ?labelAutor where{?autor rdfs:label ?labelAutor. ?autor rdf:type <http://schema.org/Person>. ?autor <http://dbpedia.org/ontology/birthPlace> ?lugarNacimiento. ?lugarNacimiento rdfs:label ?labelLugarNacimiento FILTER (?labelAutor=\""+autor+"\"@es) FILTER (?labelLugarNacimiento = \""+lugarNacimiento+"\"@es) } LIMIT 1";
+		System.out.println(queryStardog);
+		TupleQuery query = repoConn.prepareTupleQuery(QueryLanguage.SPARQL, queryStardog);
 		TupleQueryResult queryResults = query.evaluate();
 		while (queryResults.hasNext()) {
 			nombreAutor = queryResults.next().toString();
-			System.out.println(nombreAutor);
-			nombreAutor = nombreAutor.replace("[nombreAutor=\"", "");
-			nombreAutor = nombreAutor.replace("\"@es]", "");
-			if (!nombreAutores.contains(nombreAutor)) {
-				nombreAutores.add(nombreAutor);
+			nombreAutor = nombreAutor.replace("[labelAutor=\"", "");
+			nombreAutor = nombreAutor.replace("\"@es]", "" );
+			if (!listaAutoresLugarNacimientoConcreto.contains(nombreAutor)){
+				listaAutoresLugarNacimientoConcreto.add(nombreAutor);
 			}
 		}
-		return nombreAutores;
+		}
+		return listaAutoresLugarNacimientoConcreto;
 	}
 
 	public List<String> getBooksNames() throws RepositoryException, MalformedQueryException, QueryEvaluationException {
@@ -227,6 +271,7 @@ public class Stardog {
 				nombreAutores.add(nombreAutor);
 			}
 		}
+		Collections.sort(nombreAutores);
 		return nombreAutores;
 	}
 
@@ -263,25 +308,70 @@ public class Stardog {
 				}
 			}
 		}
-		
 		return listaLugaresNacimientoAutores;
 	}
 
+	public List<String> getAllBookData(String resource) throws RepositoryException, MalformedQueryException, QueryEvaluationException{
+		List<String> descripcionRecurso = new ArrayList<String>();
+		String queryText ="select distinct ?nombreLibro ?autor ?descripcion where{graph<http://lod.eurohelp.es/graph/novelas>{?libro rdf:type <http://schema.org/Book>. ?libro <http://schema.org/name> ?nombreLibro. ?libro <http://schema.org/description> ?autor. OPTIONAL{ ?libro <http://schema.googleapis.com/detailedDescription> ?recursoDescripcion. ?recursoDescripcion <http://schema.org/articleBody> ?descripcion.}}FILTER (?nombreLibro IN (\""+resource+"\"))} limit 1 ";
+		System.out.println("query total libro" + queryText);
+		TupleQuery query = repository.prepareTupleQuery(QueryLanguage.SPARQL, queryText);
+		TupleQueryResult queryResults = query.evaluate();
+		String datoRecurso="";
+		while (queryResults.hasNext()) {
+			datoRecurso = queryResults.next().toString();
+			System.out.println(datoRecurso);
+			datoRecurso = datoRecurso.replace("[nombreLibro=\"", "");
+			datoRecurso = datoRecurso.replace("\"^^<http://www.w3.org/2001/XMLSchema#string>", "");
+			datoRecurso = datoRecurso.replace("descripcion=\"", "");
+			datoRecurso = datoRecurso.replace("autor=\"", "");
+			datoRecurso = datoRecurso.replace("]", "");
+			String[] resultados = datoRecurso.split(";");
+			descripcionRecurso.addAll( Arrays.asList(resultados));
+		}
+		return descripcionRecurso;
+	}
+	
+	//La query se hace directamente contra la dbpedia
+	public List<String> getAllAuthorData(String resource) throws RepositoryException, MalformedQueryException, QueryEvaluationException {
+		Repository repo = new SPARQLRepository("http://es.dbpedia.org/sparql");
+		repo.initialize();
+		RepositoryConnection repoConn = repo.getConnection();
+		List<String> descripcionRecurso = new ArrayList<String>();
+		String queryText ="select distinct ?labelAutor ?resumenAutor where{?autor rdfs:label ?labelAutor. ?autor <http://dbpedia.org/ontology/abstract> ?resumenAutor. FILTER (?labelAutor IN  (\""+resource+"\"@en , \""+resource+"\"@es))} limit 100";
+		TupleQuery query = repoConn.prepareTupleQuery(QueryLanguage.SPARQL, queryText);
+		TupleQueryResult queryResults = query.evaluate();
+		String datoRecurso="";
+		while (queryResults.hasNext()) {
+			datoRecurso = queryResults.next().toString();
+			System.out.println(datoRecurso);
+			datoRecurso = datoRecurso.replace("[labelAutor=\"", "");
+			datoRecurso = datoRecurso.replace("resumenAutor=\"", "");
+			datoRecurso = datoRecurso.replace("@es", "");
+			datoRecurso = datoRecurso.replaceAll("\"", "");
+			datoRecurso = datoRecurso.replace("]", "");
+			String[] resultados = datoRecurso.split(";");
+			descripcionRecurso=Arrays.asList(resultados);
+		}
+		return descripcionRecurso;
+	}
+	
 	public List<String> getSedesNames() throws RepositoryException, MalformedQueryException, QueryEvaluationException {
-		List<String> nombreAutores = new ArrayList<String>();
-		String nombreAutor = "";
+		List<String> nombreSedes = new ArrayList<String>();
+		String nombreSede = "";
 		String queryText = "SELECT ?nombreSede WHERE{graph<http://lod.eurohelp.es/graph/sedes>{ ?sede <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?esSede.?sede <http://www.w3.org/2000/01/rdf-schema#label> ?nombreSede.}}";
 		TupleQuery query = repository.prepareTupleQuery(QueryLanguage.SPARQL, queryText);
 		TupleQueryResult queryResults = query.evaluate();
 		while (queryResults.hasNext()) {
-			nombreAutor = queryResults.next().toString();
-			System.out.println(nombreAutor);
-			nombreAutor = nombreAutor.replace("[nombreSede=\"", "");
-			nombreAutor = nombreAutor.replace("\"]", "");
-			if (!nombreAutores.contains(nombreAutor)) {
-				nombreAutores.add(nombreAutor);
+			nombreSede = queryResults.next().toString();
+			System.out.println(nombreSede);
+			nombreSede = nombreSede.replace("[nombreSede=\"", "");
+			nombreSede = nombreSede.replace("\"]", "");
+			if (!nombreSedes.contains(nombreSede)) {
+				nombreSedes.add(nombreSede);
 			}
 		}
-		return nombreAutores;
+		Collections.sort(nombreSedes);
+		return nombreSedes;
 	}
 }
