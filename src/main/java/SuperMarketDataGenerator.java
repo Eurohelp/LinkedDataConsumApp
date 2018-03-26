@@ -189,9 +189,6 @@ public class SuperMarketDataGenerator {
 		transform.addRDFTYPETriple(predicadoVentaRecursoFecha, tipoVentas);
 		// La venta tiene asociado un producto
 		transform.addTriple(predicadoVentaRecursoFecha, predicadoProductoVendido, resource);
-		// El recurso tiene un autor
-		
-		
 		// La venta tiene asociada una fecha
 		transform.addDataTripleXSDDate(predicadoVentaRecursoFecha, predicadoFecha, date);
 		// La venta tiene asociada una cantidad
