@@ -92,8 +92,11 @@ public class GeneradorIndex {
 		return stringWriter.toString();
 	}
 
-	//Genera indice para libro a partir de seleccion de nombre o lugar nacimiento
-	public String generarIndex(String tipoConsulta, String segundaElecc, String tipoInformacionSolicitada, List<String> listaNombreRecursos) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
+	// Genera indice para libro a partir de seleccion de nombre o lugar
+	// nacimiento
+	public String generarIndex(String tipoConsulta, String segundaElecc, String tipoInformacionSolicitada,
+			List<String> listaNombreRecursos) throws TemplateNotFoundException, MalformedTemplateNameException,
+			ParseException, IOException, TemplateException {
 		Map<String, Object> listaGlobal = new HashMap<String, Object>();
 		listaGlobal.put("tipoConsulta", tipoConsulta);
 		listaGlobal.put("tipoInfoConcreta", segundaElecc);
@@ -104,8 +107,11 @@ public class GeneradorIndex {
 		template.process(listaGlobal, stringWriter);
 		return stringWriter.toString();
 	}
-	
-	public String generarIndex(String tipoConsulta, String segundaElecc,String tipoInformacionSolicitada, List<String> listaNombreRecursos, String recursoSeleccionado, List<String> datosGlobales) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
+
+	public String generarIndex(String tipoConsulta, String segundaElecc, String tipoInformacionSolicitada,
+			List<String> listaNombreRecursos, String recursoSeleccionado, List<String> datosGlobales)
+			throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException,
+			TemplateException {
 		Map<String, Object> listaGlobal = new HashMap<String, Object>();
 		listaGlobal.put("tipoConsulta", tipoConsulta);
 		listaGlobal.put("tipoInfoConcreta", segundaElecc);
@@ -118,10 +124,11 @@ public class GeneradorIndex {
 		template.process(listaGlobal, stringWriter);
 		return stringWriter.toString();
 	}
-	
-	public String generarIndex(String tipoConsulta, String segundaElecc,
-			List<String> listaNombreRecursos, String recursoSeleccionado, String tipoInformacionSolicitada,
-			String sedeSeleccionada, List<String> listaSedes) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
+
+	public String generarIndex(String tipoConsulta, String segundaElecc, List<String> listaNombreRecursos,
+			String recursoSeleccionado, String tipoInformacionSolicitada, String sedeSeleccionada,
+			List<String> listaSedes) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException,
+			IOException, TemplateException {
 		Map<String, Object> listaGlobal = new HashMap<String, Object>();
 		listaGlobal.put("tipoConsulta", tipoConsulta);
 		listaGlobal.put("tipoInfoConcreta", segundaElecc);
@@ -135,12 +142,12 @@ public class GeneradorIndex {
 		template.process(listaGlobal, stringWriter);
 		return stringWriter.toString();
 	}
-	
-	
-//?????
-	public String generarIndex(String tipoConsulta, String segundaElecc,
-			List<String> listaNombreRecursos, String recursoSeleccionado, String tipoInformacionSolicitada,
-			List<String> listaSedes, String sedeSeleccionada, List<String> datosGlobales) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
+
+	// ?????
+	public String generarIndex(String tipoConsulta, String segundaElecc, List<String> listaNombreRecursos,
+			String recursoSeleccionado, String tipoInformacionSolicitada, List<String> listaSedes,
+			String sedeSeleccionada, List<String> datosGlobales) throws TemplateNotFoundException,
+			MalformedTemplateNameException, ParseException, IOException, TemplateException {
 		Map<String, Object> listaGlobal = new HashMap<String, Object>();
 		listaGlobal.put("tipoConsulta", tipoConsulta);
 		listaGlobal.put("tipoInfoConcreta", segundaElecc);
@@ -156,7 +163,9 @@ public class GeneradorIndex {
 		return stringWriter.toString();
 	}
 
-	public String generarIndex(String tipoConsulta, String segundaElecc, String tipoInformacionSolicitada, List<String> listaNombreRecursos, String recursoSeleccionado) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
+	public String generarIndex(String tipoConsulta, String segundaElecc, String tipoInformacionSolicitada,
+			List<String> listaNombreRecursos, String recursoSeleccionado) throws TemplateNotFoundException,
+			MalformedTemplateNameException, ParseException, IOException, TemplateException {
 		Map<String, Object> listaGlobal = new HashMap<String, Object>();
 		listaGlobal.put("tipoConsulta", tipoConsulta);
 		listaGlobal.put("tipoInfoConcreta", segundaElecc);
@@ -167,6 +176,14 @@ public class GeneradorIndex {
 		StringWriter stringWriter = new StringWriter();
 		template.process(listaGlobal, stringWriter);
 		return stringWriter.toString();
+	}
+
+	public String generarIndex(String tipoConsulta, String tipoRecursoSobreElQueSeSolicitaInformacion,
+			String tipoInformacionSolicitada, String nombreRecursoSeleccionado,
+			List<String> listaAutoresPorLugaresNacimiento, String autorSeleccionadoPorLugarNac, String tipoSede,
+			List<String> listaSedes) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

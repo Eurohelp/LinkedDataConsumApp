@@ -117,10 +117,16 @@ public class ServGeneradorIndex extends HttpServlet {
 				try {// si se selecciona autor hay que cargar los menus de autor
 					if (tipoInformacionSolicitada.equalsIgnoreCase("NacidoEn")) {
 						listaNombreAutor = stardog.getAuthorsNames();
-						listaAutoresPorLugaresNacimiento = stardog.getAllAuthorsByBirthPlace(listaNombreAutor, nombreRecursoSeleccionado);
-						responseData = generadorIndex.generarIndex(tipoConsulta,
-								tipoRecursoSobreElQueSeSolicitaInformacion, tipoInformacionSolicitada,
-								listaLugaresNacimiento, nombreRecursoSeleccionado, listaAutoresPorLugaresNacimiento);
+						listaAutoresPorLugaresNacimiento = stardog.getAllAuthorsByBirthPlace(listaNombreAutor,
+								nombreRecursoSeleccionado);
+						if (listaAutoresPorLugaresNacimiento.size() > 0) {
+							responseData = generadorIndex.generarIndex(tipoConsulta,
+									tipoRecursoSobreElQueSeSolicitaInformacion, tipoInformacionSolicitada,
+									listaLugaresNacimiento, nombreRecursoSeleccionado,
+									listaAutoresPorLugaresNacimiento);
+						} else {
+							responseData = "No hay datos que recuperar: \n No hay autores nacidos en ese sitio almacenados.";
+						}
 					} else if (tipoInformacionSolicitada.equalsIgnoreCase("Nombre")) {
 						listaNombreAutor = stardog.getAuthorsNames();
 						responseData = generadorIndex.generarIndex(tipoConsulta,
@@ -132,10 +138,8 @@ public class ServGeneradorIndex extends HttpServlet {
 					e.printStackTrace();
 				}
 			} else if (tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Libro") && tipoSede == null
-					&& nombreRecursoSeleccionado == null) {// Aqui entra si se
-															// selecciona libro
-															// para que salgan
-															// los titulos
+					&& nombreRecursoSeleccionado == null) {
+				// Aqui entra si se selecciona libro para que salgan los titulos
 				try {
 					listaNombreLibros = stardog.getBooksNames();
 					responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion,
@@ -240,10 +244,22 @@ public class ServGeneradorIndex extends HttpServlet {
 		else if ((tipoConsulta.equalsIgnoreCase("Ventas") || tipoConsulta.equalsIgnoreCase("Datos"))
 				&& tipoRecursoSobreElQueSeSolicitaInformacion != null
 				&& (tipoSede != null || tipoInformacionSolicitada != null)) {
-
+			
+			if(tipoConsulta.equalsIgnoreCase("Ventas")
+					&& tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Autor") && tipoSede != null
+					&& nombreSedeSeleccionada == null && autorSeleccionadoPorLugarNac != null){
+			
+//					listaSedes = stardog.getSedesNames();
+//					responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion,tipoInformacionSolicitada
+//							listaLugaresNacimiento, nombreRecursoSeleccionado, listaAutoresPorLugaresNacimiento, autorSeleccionadoPorLugarNac,  tipoSede,
+//							listaSedes);
+				
+				
+			}
+			
 			if (tipoConsulta.equalsIgnoreCase("Ventas")
 					&& tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Autor") && tipoSede != null
-					&& nombreSedeSeleccionada == null) {
+					&& nombreSedeSeleccionada == null && autorSeleccionadoPorLugarNac == null) {
 				try {
 					listaSedes = stardog.getSedesNames();
 					responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion,
@@ -259,6 +275,10 @@ public class ServGeneradorIndex extends HttpServlet {
 					&& nombreSedeSeleccionada != null) {
 				System.out.println("ehen");
 				List<String> datosFinales = new ArrayList<>();
+				if(tipoInformacionSolicitada == "NacidoEn"){
+					
+				}
+				else
 				try {
 					datosFinales = stardog.getDatosNumVentasTotalesEnSedeConcretaPorAutorySede(
 							nombreRecursoSeleccionado, nombreSedeSeleccionada);
@@ -275,6 +295,8 @@ public class ServGeneradorIndex extends HttpServlet {
 								tipoRecursoSobreElQueSeSolicitaInformacion, listaNombreAutor, nombreRecursoSeleccionado,
 								tipoInformacionSolicitada, listaSedes, nombreSedeSeleccionada, datosFinales);
 					}
+					
+					
 				} catch (TemplateException | RepositoryException | MalformedQueryException
 						| QueryEvaluationException e) {
 					e.printStackTrace();

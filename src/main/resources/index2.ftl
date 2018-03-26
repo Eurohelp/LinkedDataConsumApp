@@ -195,6 +195,7 @@ perritoooooooooooooooooooooooooo
 </#if>
 <#--Si se ha seleccionado datos y autor/libro y ya se ha seleccionado el recurso-->
 <#if tipoConsulta=="Datos" && listaNombreRecursos?has_content && listaDatosTotales?has_content && !sedeSeleccionada?has_content>
+<div class="panel list-group">
 ¿Qué deseas consuldssdfvstar?
          <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 			<option value="Datos" selected>Datos</option>
@@ -274,8 +275,10 @@ perritoooooooooooooooooooooooooo
 </#if>
 </#if>
 <#-- Si se ha seleccionado datos, lugar nacim, -->
-<#if tipoConsulta=="Datos" && listaNombreRecursos?has_content && listaNombreSedes?has_content>
+<#if (tipoConsulta=="Datos") && listaNombreRecursos?has_content && listaNombreSedes?has_content>
+<div class="panel list-group">
 ¿Qué deseas consuldssdfddddffddddvstar?
+
          <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 			<option value="Datos" selected>Datos</option>
 		</select>
@@ -325,6 +328,7 @@ perritoooooooooooooooooooooooooo
 </#if>
 
 <#if tipoConsulta=="Ventas" && listaNombreRecursos?has_content && listaNombreSedes?has_content && !sedeSeleccionada?has_content>
+<div class="panel list-group">
 ¿Qué deseas consuldssdfdsvvvvvvvvvvvvvascsdddvstar?
          <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 			<option value="Ventas" selected>Ventas</option>
@@ -362,6 +366,39 @@ perritoooooooooooooooooooooooooo
 </select>
 </#if>
 </#if>
+</#if>
+
+<#if tipoConsulta=="Ventas" && listaNombreRecursos?has_content && listaDatosTotales?has_content && tipoDatoRecursoSolicitado=="NacidoEn">
+<div class="panel list-group">
+¿Qué deseas consuldssdfdsdstar?
+         <select class="form-control" id="tipoInformacion" name="tipoInformacion">
+			<option value="Ventas" selected>Ventas</option>
+		</select>
+		
+¿Sobre qué tipo de recurso?
+				<select class="form-control" id="tipoInformacion-Ventas" name="tipoInformacion-Ventas">
+						<option value="Autor" selected>Autor</option>
+					</select> 
+		
+<select class="form-control" id="tipoInformacion-Ventas-Autor-Cantante" name="tipoInformacion-Ventas-Autor-Cantante">
+						<option value="NacidoEn" selected>Nacido en</option>
+					</select>
+		<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre" name="tipoInformacion-Ventas-Autor-Nombre">
+					<#list listaNombreRecursos as nombre>
+							 <#if NombreRecurso == "${nombre}">
+ 				 				<option value="${nombre}" selected>${nombre}</option>
+							</#if>
+</#list></select>
+
+<select class="form-control" id="tipoInformacion-Datos-LugarNac-Autor" name="tipoInformacion-Datos-LugarNac-Autor">
+					<#list listaDatosTotales as nombre>
+ 				 				<option value="${nombre}">${nombre}</option>
+</#list></select>
+<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede">
+								 	<option value="Sede">Sede</option>
+								 	<option value="Totales">Todas las sedes</option>
+</select>
+
 </#if>
 
 <#if tipoConsulta=="Ventas" && listaNombreRecursos?has_content && listaDatosTotales?has_content && sedeSeleccionada?has_content>
