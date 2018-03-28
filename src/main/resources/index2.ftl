@@ -374,6 +374,15 @@
                                             <select class="form-control" id="tipoInformacion-Ventas-Autor-Cantante" name="tipoInformacion-Ventas-Autor-Cantante">
 						<option value="Nombre" selected>Nombre</option>
 					</select>
+					
+					<h7>Elige una opci&oacute;n:</h7>
+                                        <select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre" name="tipoInformacion-Ventas-Autor-Nombre">
+					<#list listaNombreRecursos as nombre>
+							 <#if NombreRecurso == "${nombre}">
+ 				 				<option value="${nombre}" selected>${nombre}</option>
+							</#if>
+</#list></select>
+
                                             <#elseif tipoDatoRecursoSolicitado=="NacidoEn">
                                                 <h7>&iquest;A partir de qu&eacute; tipo de datos?</h7>
                                                 <select class="form-control" id="tipoInformacion-Ventas-Autor-Cantante" name="tipoInformacion-Ventas-Autor-Cantante">
@@ -390,12 +399,33 @@
                                             <h7>&iquest;Sobre qu&eacute; sede quieres recibir la informaci&oacute;n?</h7>
                                             <select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede">
 								 	<option value="Sede" selected>Sede</option>
-</select><h7>Elige una opci&oacute;n:</h7>
+</select>
+<h7>Elige una opci&oacute;n:</h7>
                                             <select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede-Sede">
 <#list listaNombreSedes as nombre>
  				 				<option value="${nombre}">${nombre}</option>
 </#list>
 </select>
+<#elseif tipoSede=="Totales">
+       <h7>&iquest;Sobre qu&eacute; sede quieres recibir la informaci&oacute;n?</h7>
+                                            <select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede">
+								 	<option value="Totales" selected>Todas las sedes</option>
+</select>
+ <div class="queryResults" id="queryResults">
+                                <table id="resultTable" name="resultTable" class="table table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Autor</th>
+                                            <th>Total Ventas</th>
+                                        </tr>
+                                    </thead>
+                                    <tr>
+                                        <#list listaNombreSedes as dato>
+                                            <td>${dato}</td>
+                                        </#list>
+                                    </tr>
+                                </table>
+                            </div>
                                         </#if>
                                     </#if>
                             </#if>
@@ -429,7 +459,7 @@
 
                             </#if>
 
-                            <#if tipoConsulta=="Ventas" && listaNombreRecursos?has_content && listaDatosTotales?has_content && sedeSeleccionada?has_content>
+<#if tipoConsulta=="Ventas" && listaNombreRecursos?has_content && listaDatosTotales?has_content && sedeSeleccionada?has_content>
                                                             <div class="panel list-group">
                                 <h7>&iquest;Qu&eacute; deseas consultar?</h7> ngeth
                                 <select class="form-control" id="tipoInformacion" name="tipoInformacion">

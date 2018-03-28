@@ -178,6 +178,4 @@ public class GeneradorIndex {
 		return stringWriter.toString();
 	}
 
-
-
 }

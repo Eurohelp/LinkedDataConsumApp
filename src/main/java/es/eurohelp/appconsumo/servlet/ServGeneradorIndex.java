@@ -117,9 +117,10 @@ public class ServGeneradorIndex extends HttpServlet {
 		else if(tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Autor") && tipoInformacionSolicitada!=null && nombreRecursoSeleccionado!=null){
 			try {//si se selecciona autor hay que cargar los menus de autor
 				if(tipoInformacionSolicitada.equalsIgnoreCase("NacidoEn")){
-					listaLugaresNacimiento = stardog.getBirthPlaces();
+					listaNombreAutor = stardog.getAuthorsNames();
+					listaAutoresPorLugaresNacimiento= stardog.getAllAuthorsByBirthPlace(listaNombreAutor, nombreRecursoSeleccionado);
 					responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion, tipoInformacionSolicitada,
-							listaLugaresNacimiento, nombreRecursoSeleccionado);
+							listaLugaresNacimiento, nombreRecursoSeleccionado, listaAutoresPorLugaresNacimiento);
 				}
 					else if(tipoInformacionSolicitada.equalsIgnoreCase("Nombre")){
 					listaNombreAutor = stardog.getAuthorsNames();
@@ -265,7 +266,52 @@ public class ServGeneradorIndex extends HttpServlet {
 				} catch (TemplateException | RepositoryException | MalformedQueryException | QueryEvaluationException | TupleQueryResultHandlerException | UnsupportedQueryResultFormatException e) {
 					e.printStackTrace();
 				}
-			} 
+			} else if (tipoRecursoSobreElQueSeSolicitaInformacion.equalsIgnoreCase("Autor") && tipoSede!=null && nombreRecursoSeleccionado!=null){
+				if(tipoSede.equalsIgnoreCase("Sede")){
+				if(nombreSedeSeleccionada==null){
+				try {
+					listaSedes=stardog.getSedesNames();
+					responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion, listaLugaresNacimiento, nombreRecursoSeleccionado, tipoInformacionSolicitada, tipoSede, listaSedes);
+
+				} catch (RepositoryException | MalformedQueryException | QueryEvaluationException | TemplateException e) {
+					e.printStackTrace();
+				}}else if(nombreSedeSeleccionada!=null) {
+					try {
+						List<String> datosFinales= stardog.getDatosNumVentasTotalesEnSedeConcretaPorAutorySede(nombreRecursoSeleccionado, nombreSedeSeleccionada);
+						if(datosFinales.size()>1){
+						responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion, listaNombreAutor, nombreRecursoSeleccionado, tipoInformacionSolicitada, listaSedes, nombreSedeSeleccionada, datosFinales);
+						}else{
+							datosFinales= new ArrayList<>();
+							datosFinales.add(nombreRecursoSeleccionado);
+							datosFinales.add(nombreSedeSeleccionada);
+							datosFinales.add("0");
+							responseData = generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion, listaNombreAutor, nombreRecursoSeleccionado, tipoInformacionSolicitada, listaSedes, nombreSedeSeleccionada, datosFinales);
+						}
+						} catch (TemplateException | RepositoryException | MalformedQueryException | QueryEvaluationException e) {
+						e.printStackTrace();
+					}
+				}
+				}
+				else if(tipoSede.equalsIgnoreCase("Totales")){
+					try {
+						
+						List<String> datosFinales=stardog.getDatosNumVentasTotalesEnTodasLasSedesByAuthor(nombreRecursoSeleccionado);
+						if(datosFinales.size()>1){
+						responseData= generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion, listaNombreAutor, nombreRecursoSeleccionado, tipoInformacionSolicitada, tipoSede,datosFinales);
+						}
+						else{
+							datosFinales= new ArrayList<>();
+							datosFinales.add(nombreRecursoSeleccionado);
+							datosFinales.add("0");
+							responseData= generadorIndex.generarIndex(tipoConsulta, tipoRecursoSobreElQueSeSolicitaInformacion, listaNombreAutor, nombreRecursoSeleccionado, tipoInformacionSolicitada, tipoSede,datosFinales);
+						}
+						} catch (TemplateException | RepositoryException | MalformedQueryException | QueryEvaluationException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+			}
 		}
 		
 		System.out.println(responseData + "vacio joder");
