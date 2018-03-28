@@ -35,8 +35,7 @@
 	href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/themes/bootstrap.rtl.min.css" />
 <link rel="stylesheet" type="text/css" href="css/estilos.css">
 <!-- Fuente -->
-<link href="https://fonts.googleapis.com/css?family=Bellefair"
-	rel="stylesheet">
+
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"

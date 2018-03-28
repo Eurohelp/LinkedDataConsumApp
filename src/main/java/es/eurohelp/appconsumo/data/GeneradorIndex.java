@@ -178,12 +178,6 @@ public class GeneradorIndex {
 		return stringWriter.toString();
 	}
 
-	public String generarIndex(String tipoConsulta, String tipoRecursoSobreElQueSeSolicitaInformacion,
-			String tipoInformacionSolicitada, String nombreRecursoSeleccionado,
-			List<String> listaAutoresPorLugaresNacimiento, String autorSeleccionadoPorLugarNac, String tipoSede,
-			List<String> listaSedes) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

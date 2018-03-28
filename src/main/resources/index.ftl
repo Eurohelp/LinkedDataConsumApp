@@ -1,330 +1,194 @@
-<form name="form" id="form">
-		<#if tipoConsulta?has_content &&  tipoConsulta == "null" && !tipoInfoConcreta?has_content>
-     <div class="panel list-group">
-     �Qu� deseas consultar?
-         <select class="form-control" id="tipoInformacion" name="tipoInformacion">
-			<option value="Ventas">Ventas</option>
-			<option value="Datos">Datos</option>
-		</select>
-		</#if>
-		<#if tipoConsulta?has_content &&  tipoConsulta == "Ventas" && !tipoInfoConcreta?has_content>
-		<div class="panel list-group">
-		�Qu� deseas consultar?
-         <select class="form-control" id="tipoInformacion" name="tipoInformacion">
-			<option value="Ventas" selected>Ventas</option>
-			<option value="Datos">Datos</option>
-		</select>
-				<select class="form-control" id="tipoInformacion-Ventas" name="tipoInformacion-Ventas">
+<form name="form" id="form" class="form">
+<#if tipoConsulta?has_content && tipoConsulta=="null">
+<div class="panel list-group">                
+           <h7>&iquest;Qu&eacute; deseas consultar?</h7>
+                <select class="form-control" id="tipoInformacion" name="tipoInformacion">
+		<option value="Ventas">Ventas</option>
+		<option value="Datos">Datos</option>
+	</select>
+	</div>
+</form>
+
+
+
+
+
+   <#----------------------------------------------------------------------------------------------------------------------------------------------->
+<#elseif tipoConsulta?has_content && tipoConsulta=="Ventas">
+<div class="panel list-group">                
+           <h7>&iquest;Qu&eacute; deseas consultar?</h7>
+                <select class="form-control" id="tipoInformacion" name="tipoInformacion">
+		<option value="Ventas" selected>Ventas</option>
+	</select>
+<#if !tipoInfoConcreta?has_content>
+<h7>&iquest;Sobre qu&eacute; tipo de recurso?</h7>
+                     <select class="form-control" id="tipoInformacion-Ventas" name="tipoInformacion-Ventas">
 						<option value="Libro">Libro</option>
-						<option value="Disco">Disco</option>
 						<option value="Autor">Autor</option>
-						<option value="Cantante">Cantante</option>
-					</select> 
-         </#if>
-		<#if tipoConsulta?has_content && tipoConsulta == "Ventas" && tipoInfoConcreta?has_content && !datosSolicitados?has_content>
-		 <#if  tipoInfoConcreta=="Autor">
-		 		<div class="panel list-group">
-		 <select class="form-control" id="tipoInformacion" name="tipoInformacion">
-			<option value="Ventas" selected>Ventas</option>
-			<option value="Datos">Datos</option>
-		</select>
-		<select class="form-control" id="tipoInformacion-Ventas" name="tipoInformacion-Ventas">
-						<option value="Libro">Libro</option>
-						<option value="Disco">Disco</option>
-						<option value="Autor" selected>Autor</option>
-						<option value="Cantante">Cantante</option>
-					</select> 
-				<select class="form-control" id="tipoInformacion-Ventas-Autor-Cantante" name="tipoInformacion-Ventas-Autor-Cantante">
-						<option value="Nombre">Nombre</option>
-						<option value="NacidoEn">Nacido en</option>
-					</select> 
-			<#else>
-				<div class="panel list-group">
-		 <select class="form-control" id="tipoInformacion" name="tipoInformacion">
-			<option value="Ventas" selected>Ventas</option>
-			<option value="Datos">Datos</option>
-		</select>
-		<select class="form-control" id="tipoInformacion-Ventas" name="tipoInformacion-Ventas">
+					</select>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+<#elseif tipoInfoConcreta?has_content && tipoInfoConcreta=="Libro">
+<h7>&iquest;Sobre qu&eacute; tipo de recurso?</h7>
+                     <select class="form-control" id="tipoInformacion-Ventas" name="tipoInformacion-Ventas">
 						<option value="Libro" selected>Libro</option>
-						<option value="Disco">Disco</option>
-						<option value="Autor">Autor</option>
-						<option value="Cantante">Cantante</option>
-					</select> 
-					<select class="form-control" id="tipoInformacion-Ventas-Autor-Cantante" name="tipoInformacion-Ventas-Autor-Cantante">
-						<option value="Nombre">Nombre</option>
-						<option value="NacidoEn">Nacido en</option>
-					</select> 
-				</#if>
-         </#if>
-		<#if tipoConsulta?has_content && tipoConsulta == "Ventas" && tipoInfoConcreta?has_content && datosSolicitados?has_content && !listaNombreSedes?has_content && !listaDatos?has_content>
-            <#if tipoInfoConcreta=="Autor" && datosSolicitados=="Nombre"> 
-            <div class="panel list-group">
-              <select class="form-control" id="tipoInformacion" name="tipoInformacion">
-			<option value="Ventas" selected>Ventas</option>
-			<option value="Datos">Datos</option>
-		</select>
-		<select class="form-control" id="tipoInformacion-Ventas" name="tipoInformacion-Ventas">
-						<option value="Libro">Libro</option>
-						<option value="Disco">Disco</option>
-						<option value="Autor" selected>Autor</option>
-						<option value="Cantante">Cantante</option>
-					</select> 
-				<select class="form-control" id="tipoInformacion-Ventas-Autor-Cantante" name="tipoInformacion-Ventas-Autor-Cantante">
-						<option value="Nombre" selected>Nombre</option>
-						<option value="NacidoEn">Nacido en</option>
-					</select> 
-				<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre" name="tipoInformacion-Ventas-Autor-Nombre">
-             <#list listaNombreRecursos as nombre>
-						<option value="${nombre}">${nombre}</option>
-             </#list>
-	</select> 
-	<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede">
+					</select>
+	<#if listaNombreRecursos?has_content && !NombreRecurso?has_content && !tipoSede?has_content>
+<h7>Elige una opci&oacute;n:</h7>
+         <select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre" name="tipoInformacion-Ventas-Autor-Nombre">
+		 <#list listaNombreRecursos as nombre>
+ 			<option value="${nombre}">${nombre}</option>
+		</#list>
+</select>
+<h7>&iquest;Sobre qu&eacute; sede quieres recibir la informaci&oacute;n?</h7>
+                            <select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede">
 						<option value="Sede">Sede</option>
 						<option value="Totales">Todas las sedes</option>
 					</select>
-					<#elseif tipoInfoConcreta=="Libro" && datosSolicitados=="Nombre">
-					  <div class="panel list-group">
-              <select class="form-control" id="tipoInformacion" name="tipoInformacion">
-			<option value="Ventas" selected>Ventas</option>
-			<option value="Datos">Datos</option>
-		</select>
-		<select class="form-control" id="tipoInformacion-Ventas" name="tipoInformacion-Ventas">
-						<option value="Libro" selected>Libro</option>
-						<option value="Disco">Disco</option>
-						<option value="Autor">Autor</option>
-						<option value="Cantante">Cantante</option>
-					</select> 
-				<select class="form-control" id="tipoInformacion-Ventas-Autor-Cantante" name="tipoInformacion-Ventas-Autor-Cantante">
-						<option value="Nombre" selected>Nombre</option>
-						<option value="NacidoEn">Nacido en</option>
-					</select> 
-				<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre" name="tipoInformacion-Ventas-Autor-Nombre">
-             <#list listaNombreRecursos as nombre>
-						<option value="${nombre}">${nombre}</option>
-             </#list>
-	</select> 
-	<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede">
-						<option value="Sede">Sede</option>
-						<option value="Totales">Todas las sedes</option>
+					
+	<#elseif listaNombreRecursos?has_content && NombreRecurso?has_content && tipoSede?has_content>
+	<h7>Elige una opci&oacute;n:</h7>
+         <select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre" name="tipoInformacion-Ventas-Autor-Nombre">
+		 <#list listaNombreRecursos as nombre>
+		 <#if NombreRecurso=="${nombre}">
+ 			<option value="${nombre}" selected>${nombre}</option>
+		</#if>		
+</#list>
+</select>
+<#if tipoSede=="Sede">
+<h7>&iquest;Sobre qu&eacute; sede quieres recibir la informaci&oacute;n?</h7>
+                            <select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede">
+						<option value="Sede" selected>Sede</option>
 					</select>
-					</#if>
-         </#if>
-		<#if tipoConsulta?has_content && tipoConsulta == "Ventas" && tipoInfoConcreta?has_content && datosSolicitados?has_content && NombreRecurso?has_content && listaNombreSedes?has_content && !listaDatos?has_content>
-				 <#if tipoInfoConcreta=="Autor" && datosSolicitados=="Nombre">
-		  <div class="panel list-group">
-              <select class="form-control" id="tipoInformacion" name="tipoInformacion">
-			<option value="Ventas" selected>Ventas</option>
-			<option value="Datos">Datos</option>
-		</select>
-		<select class="form-control" id="tipoInformacion-Ventas" name="tipoInformacion-Ventas">
-						<option value="Libro">Libro</option>
-						<option value="Disco">Disco</option>
-						<option value="Autor" selected>Autor</option>
-						<option value="Cantante">Cantante</option>
-					</select> 
-				<select class="form-control" id="tipoInformacion-Ventas-Autor-Cantante" name="tipoInformacion-Ventas-Autor-Cantante">
-						<option value="Nombre" selected>Nombre</option>
-						<option value="NacidoEn">Nacido en</option>
-					</select> 
-				<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre" name="tipoInformacion-Ventas-Autor-Nombre">
-             <#list listaNombreRecursos as nombre>
-             <#if NombreRecurso=="${nombre}">
-						<option value="${nombre}" selected>${nombre}</option>
- 			<#else>
- 						<option value="${nombre}" >${nombre}</option>
- 				</#if>            	
-</#list>
-	</select> 
-	<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede">
-						<option value="Sede" selected>Sede</option>
-						<option value="Totales">Todas las sedes</option>
-					</select> 
-		<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede-Sede">
-			<#list listaNombreSedes as nombreSede>
-						<option value="${nombreSede}">${nombreSede}</option>
-</#list>
-	</select> 
-	<#elseif tipoInfoConcreta=="Libro" && datosSolicitados=="Nombre">
-	<div class="panel list-group">
-              <select class="form-control" id="tipoInformacion" name="tipoInformacion">
-			<option value="Ventas" selected>Ventas</option>
-			<option value="Datos">Datos</option>
-		</select>
-		<select class="form-control" id="tipoInformacion-Ventas" name="tipoInformacion-Ventas">
-						<option value="Libro" selected>Libro</option>
-						<option value="Disco">Disco</option>
-						<option value="Autor">Autor</option>
-						<option value="Cantante">Cantante</option>
-					</select> 
-				<select class="form-control" id="tipoInformacion-Ventas-Autor-Cantante" name="tipoInformacion-Ventas-Autor-Cantante">
-						<option value="Nombre" selected>Nombre</option>
-						<option value="NacidoEn">Nacido en</option>
-					</select> 
-				<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre" name="tipoInformacion-Ventas-Autor-Nombre">
-             <#list listaNombreRecursos as nombre>
-             <#if NombreRecurso=="${nombre}">
-						<option value="${nombre}" selected>${nombre}</option>
- 			<#else>
- 						<option value="${nombre}">${nombre}</option>
- 				</#if>            	
-</#list>
-
-	</select> 
-	<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede">
-						<option value="Sede" selected>Sede</option>
-						<option value="Totales">Todas las sedes</option>
-					</select> 
-		<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede-Sede">
-			<#list listaNombreSedes as nombreSede>
-						<option value="${nombreSede}">${nombreSede}</option>
-</#list>
-	</select> 
+					
+	<#if listaNombreSedes?has_content && !sedeSeleccionada?has_content>
+	<h7>Elige una opci&oacute;n:</h7>
+                                <select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede-Sede">
+								 <#list listaNombreSedes as nombreSede>
+								 	<option value="${nombreSede}">${nombreSede}</option>
+								 
+						</#list>
+</select>
+<#elseif listaNombreSedes?has_content && sedeSeleccionada?has_content>
+	<h7>Elige una opci&oacute;n:</h7>
+                                <select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede-Sede">
+								 <#list listaNombreSedes as nombreSede>
+								 <#if sedeSeleccionada=="${nombreSede}">
+								 	<option value="${nombreSede}" selected>${nombreSede}</option>
+								 </#if>
+						</#list>
+</select>
+</form>
+</div>
+<div class="queryResults" id="queryResults">
+                                    <table id="resultTable" name="resultTable" class="table table-striped">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>Recurso</th>
+                                                <th>Sede</th>
+                                                <th>TotalVentas</th>
+                                            </tr>
+                                        </thead>
+                                        <tr>
+                                            <#list listaDatosTotales as dato>
+                                                <td>${dato}</td>
+                                            </#list>
+                                        </tr>
+                                    </table>
+                                </div>
 </#if>
-</#if>
-
-<#-- Si selecciona todas las sedes -->
-<#if tipoConsulta?has_content && tipoConsulta == "Ventas" && tipoInfoConcreta?has_content && datosSolicitados?has_content && NombreRecurso?has_content && !listaNombreSedes?has_content && listaDatos?has_content && sedeSeleccionada=="Totales">
-				 <#if tipoInfoConcreta=="Libro" && datosSolicitados=="Nombre" >
-		  <div class="panel list-group">
-              <select class="form-control" id="tipoInformacion" name="tipoInformacion">
-			<option value="Ventas" selected>Ventas</option>
-			<option value="Datos">Datos</option>
-		</select>
-		<select class="form-control" id="tipoInformacion-Ventas" name="tipoInformacion-Ventas">
-						<option value="Libro" selected>Libro</option>
-						<option value="Disco">Disco</option>
-						<option value="Autor">Autor</option>
-						<option value="Cantante">Cantante</option>
-					</select> 
-				<select class="form-control" id="tipoInformacion-Ventas-Autor-Cantante" name="tipoInformacion-Ventas-Autor-Cantante">
-						<option value="Nombre" selected>Nombre</option>
-						<option value="NacidoEn">Nacido en</option>
-					</select> 
-				<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre" name="tipoInformacion-Ventas-Autor-Nombre">
-             <#list listaNombreRecursos as nombre>
-             <#if NombreRecurso=="${nombre}">
-						<option value="${nombre}" selected>${nombre}</option>
- 			<#else>
- 						<option value="${nombre}" >${nombre}</option>
- 				</#if>            	
-</#list>
-	</select> 
-	<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede">
-						<option value="Sede">Sede</option>
+<#elseif tipoSede=="Totales">
+<h7>&iquest;Sobre qu&eacute; sede quieres recibir la informaci&oacute;n?</h7>
+                        <select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede">
 						<option value="Totales" selected>Todas las sedes</option>
 					</select>
-	<div class="queryResults" id="queryResults"><table id="resultTable" name="resultTable">
-	<tr>
-    <th>Libro</th>
-    <th>TotalVentas</th>
-  </tr>
-   <tr>
-   <#list listaDatos as dato>
-    <td>${dato}</td>
-  </#list>
-  </tr>
-	</table>
-	</div>  	
-</#if>
-</#if>
-
-
-<#-- El ultimo -->
-<#if tipoConsulta?has_content && tipoConsulta == "Ventas" && tipoInfoConcreta?has_content && datosSolicitados?has_content && NombreRecurso?has_content && listaNombreSedes?has_content && listaDatos?has_content && sedeSeleccionada!="Totales">
-				 <#if tipoInfoConcreta=="Autor" && datosSolicitados=="Nombre" >
-		  <div class="panel list-group">
-              <select class="form-control" id="tipoInformacion" name="tipoInformacion">
-			<option value="Ventas" selected>Ventas</option>
-			<option value="Datos">Datos</option>
-		</select>
-		<select class="form-control" id="tipoInformacion-Ventas" name="tipoInformacion-Ventas">
-						<option value="Libro">Libro</option>
-						<option value="Disco">Disco</option>
-						<option value="Autor" selected>Autor</option>
-						<option value="Cantante">Cantante</option>
-					</select> 
-				<select class="form-control" id="tipoInformacion-Ventas-Autor-Cantante" name="tipoInformacion-Ventas-Autor-Cantante">
-						<option value="Nombre" selected>Nombre</option>
-						<option value="NacidoEn">Nacido en</option>
-					</select> 
-				<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre" name="tipoInformacion-Ventas-Autor-Nombre">
-             <#list listaNombreRecursos as nombre>
-             <#if NombreRecurso=="${nombre}">
-						<option value="${nombre}" selected>${nombre}</option>
- 			<#else>
- 						<option value="${nombre}" >${nombre}</option>
- 				</#if>            	
-</#list>
-	</select> 
-	<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede">
-						<option value="Sede" selected>Sede</option>
-						<option value="Totales">Todas las sedes</option>
-					</select> 
-		<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede-Sede">
-			<#list listaNombreSedes as nombreSede>
-			             <#if sedeSeleccionada=="${nombreSede}">
-						<option value="${nombreSede}" selected>${nombreSede}</option>
-						<#else>			
-						<option value="${nombreSede}">${nombreSede}</option>			
-						</#if>
-</#list>
-	</select> 
-	<#else>
-	<div class="panel list-group">
-              <select class="form-control" id="tipoInformacion" name="tipoInformacion">
-			<option value="Ventas" selected>Ventas</option>
-			<option value="Datos">Datos</option>
-		</select>
-		<select class="form-control" id="tipoInformacion-Ventas" name="tipoInformacion-Ventas">
-						<option value="Libro" selected>Libro</option>
-						<option value="Disco">Disco</option>
-						<option value="Autor">Autor</option>
-						<option value="Cantante">Cantante</option>
-					</select> 
-				<select class="form-control" id="tipoInformacion-Ventas-Autor-Cantante" name="tipoInformacion-Ventas-Autor-Cantante">
-						<option value="Nombre" selected>Nombre</option>
-						<option value="NacidoEn">Nacido en</option>
-					</select> 
-				<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre" name="tipoInformacion-Ventas-Autor-Nombre">
-             <#list listaNombreRecursos as nombre>
-             <#if NombreRecurso=="${nombre}">
-						<option value="${nombre}" selected>${nombre}</option>
- 			<#else>
- 						<option value="${nombre}">${nombre}</option>
- 				</#if>            	
-</#list>
-	</select> 
-	<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede">
-						<option value="Sede" selected>Sede</option>
-						<option value="Totales">Todas las sedes</option>
-					</select> 
-		<select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede-Sede">
-			<#list listaNombreSedes as nombreSede>
-						<#if sedeSeleccionada=="${nombreSede}">
-						<option value="${nombreSede}" selected>${nombreSede}</option>
-						<#else>			
-						<option value="${nombreSede}">${nombreSede}</option>			
-						</#if>
-</#list>
-	</select>
-	<div class="queryResults" id="queryResults"><table id="resultTable" name="resultTable">
-	<tr>
-    <th>Libro</th>
-    <th>Sede</th>
-    <th>TotalVentas</th>
-  </tr>
-   <tr>
-   <#list listaDatos as dato>
-    <td>${dato}</td>
-  </#list>
-  </tr>
-	</table>
+	</form>
 	</div>
-	</#if>
+	<div class="queryResults" id="queryResults">
+                                <table id="resultTable" name="resultTable" class="table table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Libro</th>
+                                            <th>TotalVentas</th>
+                                        </tr>
+                                    </thead>
+                                    <tr>
+                                        <#list listaNombreSedes as dato>
+                                            <td>${dato}</td>
+                                        </#list>
+                                    </tr>
+                                </table>
+                            </div>
 </#if>
-     </div>
- </form>
-<div class="buttonSubmitClass">
-			<input type="submit" class="btn btn-primary" value="Ejecutar"
-				onclick="getData()">
-		</div>
+</#if>
+   <#-- -->
+
+<#elseif tipoInfoConcreta?has_content && tipoInfoConcreta=="Autor">
+<h7>&iquest;Sobre qu&eacute; tipo de recurso?</h7>
+                     <select class="form-control" id="tipoInformacion-Ventas" name="tipoInformacion-Ventas">
+						<option value="Autor" selected>Autor</option>
+					</select>
+</#if>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <#----------------------------------------------------------------------------------------------------------------------------------------------->
+
+<#elseif tipoConsulta?has_content && tipoConsulta=="Datos">
+<div class="panel list-group">                
+           <h7>&iquest;Qu&eacute; deseas consultar?</h7>
+                <select class="form-control" id="tipoInformacion" name="tipoInformacion">
+		<option value="Datos" selected>Datos</option>
+	</select>
+	</div>
+</form>
+
+</#if>
+
+
+<div class="buttonSubmitClass" id ="buttonSubmitClass">
+    <input type="submit" class="btn btn-primary" value="Ejecutar" onclick="getData()">
+    <input type="submit" class="btn btn-primary" value="Restablecer" onclick="restablecer()">
+</div>

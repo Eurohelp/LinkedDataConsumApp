@@ -8,10 +8,59 @@ h3 {
 	font-size: 10px;
 }
 
+.list-group {
+	margin-left: 20%;
+	margin-right: 20%;
+	width: 60%;
+}
+
+.form {
+	margin-left: 20%;
+	margin-right: 20%;
+	width: 60%;
+	text-align: center;
+}
+
+.panel {
+	box-shadow: 0 0px 0px rgba(0, 0, 0, .05) !important;
+}
+
+.buttonSubmitClass {
+	margin-left: 30%;
+	margin-right: 30%;
+	width: 40%;
+	text-align: center;
+}
+
+.queryResults {
+	margin-left: 10%;
+	margin-right: 10%;
+	width: 80% !important;
+}
+
+.form-control {
+	width: 500px !important;
+}
+
+h7 {
+	float: left !important;
+}
+
+.table {
+	text-align: center !important;
+	border: none !important;
+	border-collapse: collapse;
+}
+
+th, td, tr {
+	border: none !important;
+	text-align: center !important;
+}
+
 body {
 	background-attachment: fixed;
 	background-size: 100%;
-	font-family: 'Bellefair', serif;
+	font-family: 'Bellefair', serif !important;
 }
 
 .blended_grid {
@@ -25,105 +74,7 @@ body {
 	clear: none;
 	height: 15%;
 	width: 100%;
-	font-family: 'Bellefair', serif;
-}
-
-.glyphicon {
-	font-size: 15px;
-}
-
-#container {
-	margin: 20px;
-	width: 200px;
-	height: 200px;
-	position: relative;
-}
-
-
-svg {
-	overflow: visible;
-}
-
-.pageContent {
-	float: right;
-	clear: none;
-	height: 70%;
-	width: 80%;
-	margin-left: 10%;
-	margin-right:10%;
-	font-family: 'Bellefair', serif;
-}
-
-.pageFooter {
-	float: left;
-	clear: none;
-	height: 15%;
-	width: 100%;
-	font-family: 'Bellefair', serif;
-}
-
-.list-group-item {
-	font-family: 'Bellefair', serif;
-}
-
-path.link {
-	fill: none;
-	stroke: #666;
-}
-
-path.textpath {
-	fill: none;
-	stroke: none;
-}
-
-marker#end {
-	fill: green;
-}
-
-.checkbox {
-	position: relative;
-	display: block;
-	width: 80px;
-	height: 26px;
-	margin: 0 auto;
-	background: #FFF;
-	border: 1px solid #2E2E2E;
-	border-radius: 2px;
-	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
-}
-
-span {
-	margin-right: 10px;
-	margin-left: 10px;
-}
-
-.custom-search-form {
-	float: right;
-	margin-top: 30px;
-	margin-right: 15px;
-	width: 45%;
-	font-size: large;
-	padding: 40px;
-}
-
-#olderResults {
-	float: left;
-	margin-top: 30px;
-	margin-right: 15px;
-	width: 45%;
-	font-size: large;
-	padding: 40px;
-}
-
-#busqueda {
-	font-size: large;
-}
-
-table {
-	border-collapse: collapse;
-	border: 2px black solid;
-	font: 14px sans-serif;
+	font-family: 'Bellefair', serif !important;
 }
 
 td {
@@ -136,7 +87,7 @@ td {
 }
 
 .alertify-notifier .ajs-message {
-	font-family: 'Bellefair', serif;
+	font-family: 'Bellefair', serif !important;
 }
 
 .alertify-notifier.ajs-right .ajs-message.ajs-visible {
