@@ -2,7 +2,7 @@
     <#if tipoConsulta?has_content && tipoConsulta=="null" && !tipoInfoConcreta?has_content !datosSolicitados?has_content && !NombreRecurso?has_content>
         <#-- Si no se ha seleccionado nada a?n -->
             <div class="panel list-group">                
-           <h7>&iquest;Qu&eacute; deseas consultar?</h7>df
+           <h7>&iquest;Qu&eacute; deseas consultar?</h7>
                 <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 		<option value="Ventas">Ventas</option>
 		<option value="Datos">Datos</option>
@@ -13,7 +13,7 @@
             <#if tipoConsulta=="Ventas">
                 <#-- Si se ha seleccionado Ventas-->
                     <div class="panel list-group">
-<h7>&iquest;Qu&eacute; deseas consultar?</h7>dfsf
+<h7>&iquest;Qu&eacute; deseas consultar?</h7dfsf
                         <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 			<option value="Ventas" selected>Ventas</option>
 		</select> <h7>&iquest;Sobre qu&eacute; tipo de recurso?</h7>
@@ -24,7 +24,7 @@
                         <#elseif tipoConsulta=="Datos">
                             <#-- Si se ha seleccionado Datos y ya se tiene el nombre del recurso a mostrar-->
                                 <div class="panel list-group">
-                                    <h7>&iquest;Qu&eacute; deseas consultar?</h7>ws
+                                    <h7>&iquest;Qu&eacute; deseas consultar?</h7>
                                     <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 			<option value="Datos" selected>Datos</option>
 		</select> <h7>&iquest;Sobre qu&eacute; tipo de recurso?</h7>
@@ -39,7 +39,7 @@
                 <#if tipoInfoConcreta=="Libro" && listaNombreRecursos?has_content && !listaNombreSedes?has_content && !tipoSede?has_content>
                     <#if tipoConsulta=="Ventas">
                         <div class="panel list-group">
-                          <h7>&iquest;Qu&eacute; deseas consultar?</h7>dsv
+                          <h7>&iquest;Qu&eacute; deseas consultar?</h7>
                             <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 			<option value="Ventas" selected>Ventas</option>
 		</select> 
@@ -60,7 +60,7 @@
 					</select>
                             <#elseif tipoConsulta=="Datos">
                                 <div class="panel list-group">
-                                    <h7>&iquest;Qu&eacute; deseas consultar?</h7>dfvvf
+                                    <h7>&iquest;Qu&eacute; deseas consultar?</h7>
                                     <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 			<option value="Datos" selected>Datos</option>
 		</select> 
@@ -77,7 +77,7 @@
                     <#elseif tipoInfoConcreta=="Autor" && !tipoDatoRecursoSolicitado?has_content && !listaNombreRecursos?has_content && !NombreRecurso?has_content>
                         <#if tipoConsulta=="Ventas">
                             <div class="panel list-group">
-                                <h7>&iquest;Qu&eacute; deseas consultar?</h7>wre
+                                <h7>&iquest;Qu&eacute; deseas consultar?</h7>
                                 <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 			<option value="Ventas" selected>Ventas</option>
 		</select>
@@ -105,7 +105,7 @@
                         <#elseif tipoSede?has_content && tipoInfoConcreta=="Libro" && NombreRecurso?has_content && tipoSede?has_content>
                             <#--Corresponde al libro-->
                             <div class="panel list-group">
-                                <h7>&iquest;Qu&eacute; deseas consultar?</h7>bfgnar
+                                <h7>&iquest;Qu&eacute; deseas consultar?</h7>
                                 <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 								<option value="Ventas" selected>Ventas</option>
 								</select> 
@@ -164,7 +164,7 @@
                 <#elseif tipoInfoConcreta=="Autor" && listaNombreRecursos?has_content && !NombreRecurso?has_content>
                     <#if tipoConsulta=="Datos">
                         <div class="panel list-group">
-                            <h7>&iquest;Qu&eacute; deseas consultar?</h7>fef
+                            <h7>&iquest;Qu&eacute; deseas consultar?</h7>
                             <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 			<option value="Datos" selected>Datos</option>
 		</select>
@@ -188,11 +188,13 @@
                             <select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre" name="tipoInformacion-Ventas-Autor-Nombre">
 					 <#list listaNombreRecursos as nombre>
  				 					<option value="${nombre}">${nombre}</option>
-</#list></select> <h7>&iquest;Sobre qu&eacute; sede quieres recibir la informaci&oacute;n?</h7>
+</#list></select>
+<#if tipoConsulta=="Ventas">
+                             <h7>&iquest;Sobre qu&eacute; sede quieres recibir la informaci&oacute;n?</h7>
                             <select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede">
-								 	<option value="Sede">Sede</option>
-								 	<option value="Totales">Todas las sedes</option>
-</select>
+						<option value="Sede">Sede</option>
+						<option value="Totales">Todas las sedes</option>
+					</select></#if>
                             <#elseif tipoDatoRecursoSolicitado=="NacidoEn">
                                 <#--Corresponde al libro y se ha solicitado lugar nacimiento-->
                                     <h7>&iquest;A partir de qu&eacute; tipo de datos?</h7>
@@ -209,7 +211,7 @@
                     <#--Si se ha seleccionado datos y autor/libro y ya se ha seleccionado el recurso-->
                         <#if tipoConsulta=="Datos" && listaNombreRecursos?has_content && listaDatosTotales?has_content && !sedeSeleccionada?has_content>
                             <div class="panel list-group">
-                                <h7>&iquest;Qu&eacute; deseas consultar?</h7>fdbf
+                                <h7>&iquest;Qu&eacute; deseas consultar?</h7>
                                 <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 			<option value="Datos" selected>Datos</option>
 		</select>
@@ -293,7 +295,7 @@
                                             <#elseif tipoInfoConcreta=="Autor" && tipoDatoRecursoSolicitado=="NacidoEn">
                                                 <h7>Elige una opci&oacute;n:</h7>
                                                 <select class="form-control" id="tipoInformacion-Datos-LugarNac-Autor" name="tipoInformacion-Datos-LugarNac-Autor">
-					<#list listaNombreSedes as nombre> 				 				
+					<#list listaDatosTotales as nombre> 				 				
 								<option value="${nombre}">${nombre}</option>
 </#list></select>
 
@@ -302,7 +304,7 @@
                         <#-- Si se ha seleccionado datos, lugar nacim, -->
                             <#if (tipoConsulta=="Datos" ) && listaNombreRecursos?has_content && listaNombreSedes?has_content>
                                 <div class="panel list-group">
-                                    <h7>&iquest;Qu&eacute; deseas consultar?</h7>febfg
+                                    <h7>&iquest;Qu&eacute; deseas consultar?</h7>
                                     <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 			<option value="Datos" selected>Datos</option>
 		</select> 
@@ -361,7 +363,7 @@
                                 
                                     <#if tipoInfoConcreta=="Autor">
                                     <div class="panel list-group">
-                                    <h7>&iquest;Qu&eacute; deseas consultar?</h7>efaa
+                                    <h7>&iquest;Qu&eacute; deseas consultar?</h7>
                                     <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 			<option value="Ventas" selected>Ventas</option>
 		</select>
@@ -388,13 +390,27 @@
                                                 <select class="form-control" id="tipoInformacion-Ventas-Autor-Cantante" name="tipoInformacion-Ventas-Autor-Cantante">
 						<option value="NacidoEn" selected>Nacido en</option>
 					</select>
-                                        </#if><h7>Elige una opci&oacute;n:</h7>
+					<h7>Elige una opci&oacute;n:</h7>
                                         <select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre" name="tipoInformacion-Ventas-Autor-Nombre">
 					<#list listaNombreRecursos as nombre>
 							 <#if NombreRecurso == "${nombre}">
  				 				<option value="${nombre}" selected>${nombre}</option>
 							</#if>
 </#list></select>
+
+
+  					<h7>Autor:</h7>  
+<#if autorSeleccionado?has_content && listaAutores?has_content>
+<select class="form-control" id="tipoInformacion-Datos-LugarNac-Autor" name="tipoInformacion-Datos-LugarNac-Autor">
+					<#list listaAutores as nombre>
+												 <#if autorSeleccionado == "${nombre}">
+ 				 				<option value="${nombre}" selected>${nombre}</option>
+ 				 				</#if>
+</#list></select>
+</#if>
+</#if>
+
+
                                         <#if tipoSede=="Sede">
                                             <h7>&iquest;Sobre qu&eacute; sede quieres recibir la informaci&oacute;n?</h7>
                                             <select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede">
@@ -402,10 +418,40 @@
 </select>
 <h7>Elige una opci&oacute;n:</h7>
                                             <select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede-Sede">
+                                            <#if !sedeSol?has_content>
 <#list listaNombreSedes as nombre>
  				 				<option value="${nombre}">${nombre}</option>
 </#list>
 </select>
+<#elseif sedeSol?has_content>
+<#list listaNombreSedes as nombre>
+<#if sedeSol=="${nombre}">
+ 				 				<option value="${nombre}" selected>${nombre}</option>
+</#if>
+</#list>
+</select>
+
+</div>
+</form>
+</div>
+                                <div class="queryResults" id="queryResults">
+                                    <table id="resultTable" name="resultTable" class="table table-striped">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>Recurso</th>
+                                                <th>Sede</th>
+                                                <th>TotalVentas</th>
+                                            </tr>
+                                        </thead>
+                                        <tr>
+                                            <#list listaDatosFinales as dato>
+                                                <td>${dato}</td>
+                                            </#list>
+                                        </tr>
+                                    </table>
+                                </div>
+</#if>
+
 <#elseif tipoSede=="Totales">
        <h7>&iquest;Sobre qu&eacute; sede quieres recibir la informaci&oacute;n?</h7>
                                             <select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede">
@@ -432,7 +478,7 @@
 
                             <#if tipoConsulta=="Ventas" && listaNombreRecursos?has_content && listaDatosTotales?has_content && tipoDatoRecursoSolicitado=="NacidoEn">
                                 <div class="panel list-group">
-                                    <h7>&iquest;Qu&eacute; deseas consultar?</h7>erbghe
+                                    <h7>&iquest;Qu&eacute; deseas consultar?</h7>
                                     <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 			<option value="Ventas" selected>Ventas</option>
 		</select> <h7>&iquest;Sobre qu&eacute; tipo de recurso?</h7>
@@ -447,11 +493,11 @@
 							 <#if NombreRecurso == "${nombre}">
  				 				<option value="${nombre}" selected>${nombre}</option>
 							</#if>
-</#list></select> <h7>Elige una opci&oacute;n:</h7>
+</#list></select> <h7>Autor:</h7>
                                     <select class="form-control" id="tipoInformacion-Datos-LugarNac-Autor" name="tipoInformacion-Datos-LugarNac-Autor">
 					<#list listaDatosTotales as nombre>
  				 				<option value="${nombre}">${nombre}</option>
-</#list></select>
+</#list></select> <h7>&iquest;Sobre qu&eacute; sede quieres recibir la informaci&oacute;n?</h7>
                                     <select class="form-control" id="tipoInformacion-Ventas-Autor-Nombre-Sede" name="tipoInformacion-Ventas-Autor-Nombre-Sede">
 								 	<option value="Sede">Sede</option>
 								 	<option value="Totales">Todas las sedes</option>
@@ -461,7 +507,7 @@
 
 <#if tipoConsulta=="Ventas" && listaNombreRecursos?has_content && listaDatosTotales?has_content && sedeSeleccionada?has_content>
                                                             <div class="panel list-group">
-                                <h7>&iquest;Qu&eacute; deseas consultar?</h7> ngeth
+                                <h7>&iquest;Qu&eacute; deseas consultar?</h7>
                                 <select class="form-control" id="tipoInformacion" name="tipoInformacion">
 			<option value="Ventas" selected>Ventas</option>
 		</select>
