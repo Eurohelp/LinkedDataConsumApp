@@ -37,12 +37,10 @@ public class GeneradorIndex {
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 	}
 
-	// Se muestra menú inicial
 	public String generarIndex(String tipoConsulta) throws TemplateException, IOException {
 		Map<String, Object> listaGlobal = new HashMap<String, Object>();
-		System.out.println("En el metodo pone que es" + tipoConsulta);
 		listaGlobal.put("tipoConsulta", tipoConsulta);
-		template = cfg.getTemplate("index2.ftl");
+		template = cfg.getTemplate("index.ftl");
 		template.setOutputEncoding("UTF-8");
 		StringWriter stringWriter = new StringWriter();
 		template.process(listaGlobal, stringWriter);
@@ -55,7 +53,7 @@ public class GeneradorIndex {
 		Map<String, Object> listaGlobal = new HashMap<String, Object>();
 		listaGlobal.put("tipoConsulta", tipoConsulta);
 		listaGlobal.put("tipoInfoConcreta", segundaElecc);
-		template = cfg.getTemplate("index2.ftl");
+		template = cfg.getTemplate("index.ftl");
 		StringWriter stringWriter = new StringWriter();
 		template.process(listaGlobal, stringWriter);
 		return stringWriter.toString();
@@ -69,7 +67,7 @@ public class GeneradorIndex {
 		listaGlobal.put("tipoConsulta", tipoConsulta);
 		listaGlobal.put("tipoInfoConcreta", segundaElecc);
 		listaGlobal.put("listaNombreRecursos", listaNombreRecursos);
-		template = cfg.getTemplate("index2.ftl");
+		template = cfg.getTemplate("index.ftl");
 		StringWriter stringWriter = new StringWriter();
 		template.process(listaGlobal, stringWriter);
 		return stringWriter.toString();
@@ -86,7 +84,7 @@ public class GeneradorIndex {
 		listaGlobal.put("NombreRecurso", recursoSeleccionado);
 		listaGlobal.put("tipoSede", tipoSede);
 		listaGlobal.put("listaNombreSedes", listaSedes);
-		template = cfg.getTemplate("index2.ftl");
+		template = cfg.getTemplate("index.ftl");
 		StringWriter stringWriter = new StringWriter();
 		template.process(listaGlobal, stringWriter);
 		return stringWriter.toString();
@@ -102,7 +100,7 @@ public class GeneradorIndex {
 		listaGlobal.put("tipoInfoConcreta", segundaElecc);
 		listaGlobal.put("tipoDatoRecursoSolicitado", tipoInformacionSolicitada);
 		listaGlobal.put("listaNombreRecursos", listaNombreRecursos);
-		template = cfg.getTemplate("index2.ftl");
+		template = cfg.getTemplate("index.ftl");
 		StringWriter stringWriter = new StringWriter();
 		template.process(listaGlobal, stringWriter);
 		return stringWriter.toString();
@@ -119,7 +117,7 @@ public class GeneradorIndex {
 		listaGlobal.put("listaNombreRecursos", listaNombreRecursos);
 		listaGlobal.put("NombreRecurso", recursoSeleccionado);
 		listaGlobal.put("listaDatosTotales", datosGlobales);
-		template = cfg.getTemplate("index2.ftl");
+		template = cfg.getTemplate("index.ftl");
 		StringWriter stringWriter = new StringWriter();
 		template.process(listaGlobal, stringWriter);
 		return stringWriter.toString();
@@ -137,7 +135,7 @@ public class GeneradorIndex {
 		listaGlobal.put("NombreRecurso", recursoSeleccionado);
 		listaGlobal.put("tipoSede", sedeSeleccionada);
 		listaGlobal.put("listaNombreSedes", listaSedes);
-		template = cfg.getTemplate("index2.ftl");
+		template = cfg.getTemplate("index.ftl");
 		StringWriter stringWriter = new StringWriter();
 		template.process(listaGlobal, stringWriter);
 		return stringWriter.toString();
@@ -158,7 +156,7 @@ public class GeneradorIndex {
 		listaGlobal.put("listaNombreSedes", listaSedes);
 		listaGlobal.put("sedeSeleccionada", sedeSeleccionada);
 		listaGlobal.put("listaDatosTotales", datosGlobales);
-		template = cfg.getTemplate("index2.ftl");
+		template = cfg.getTemplate("index.ftl");
 		StringWriter stringWriter = new StringWriter();
 		template.process(listaGlobal, stringWriter);
 		return stringWriter.toString();
@@ -173,7 +171,7 @@ public class GeneradorIndex {
 		listaGlobal.put("tipoDatoRecursoSolicitado", tipoInformacionSolicitada);
 		listaGlobal.put("listaNombreRecursos", listaNombreRecursos);
 		listaGlobal.put("NombreRecurso", recursoSeleccionado);
-		template = cfg.getTemplate("index2.ftl");
+		template = cfg.getTemplate("index.ftl");
 		StringWriter stringWriter = new StringWriter();
 		template.process(listaGlobal, stringWriter);
 		return stringWriter.toString();
@@ -192,7 +190,7 @@ public class GeneradorIndex {
 		listaGlobal.put("listaNombreSedes", listaSedes);
 		listaGlobal.put("listaAutores", listaAutoresPorLugaresNacimiento);
 		listaGlobal.put("autorSeleccionado", autorSeleccionadoPorLugarNac);
-		template = cfg.getTemplate("index2.ftl");
+		template = cfg.getTemplate("index.ftl");
 		StringWriter stringWriter = new StringWriter();
 		template.process(listaGlobal, stringWriter);
 		return stringWriter.toString();
@@ -214,15 +212,9 @@ public class GeneradorIndex {
 		listaGlobal.put("listaAutores", listaAutoresPorLugaresNacimiento);
 		listaGlobal.put("autorSeleccionado", autorSeleccionadoPorLugarNac);
 		listaGlobal.put("listaDatosFinales", datosFinales);
-		template = cfg.getTemplate("index2.ftl");
+		template = cfg.getTemplate("index.ftl");
 		StringWriter stringWriter = new StringWriter();
 		template.process(listaGlobal, stringWriter);
 		return stringWriter.toString();
 	}
-
-
-
-	
-	
-
 }

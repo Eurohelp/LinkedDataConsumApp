@@ -57,7 +57,7 @@ public class SuperMarketDataGenerator {
 			resource = iterator.next();
 			sedeNumber = rand.nextInt(4) + 0;
 			numSedes = rand.nextInt(5) + 1;
-			numVentas = rand.nextInt(80000) + 5000;
+			numVentas = rand.nextInt(21000) + 5000;
 			switch (numSedes) {
 			case 1:
 				modelo = addResourceTriples(modelo, resource, randomDate(), numVentas, sedesSupermercado[sedeNumber],
@@ -72,7 +72,7 @@ public class SuperMarketDataGenerator {
 				// Se reinicializan los randoms para nuevos datos-->2
 				sedeNumber = rand.nextInt(4) + 0;
 				numSedes = rand.nextInt(5) + 1;
-				numVentas = rand.nextInt(80000) + 5000;
+				numVentas = rand.nextInt(34000) + 5000;
 				modelo = addResourceTriples(modelo, resource, randomDate(), numVentas, sedesSupermercado[sedeNumber],
 						graph);
 				cont++;
@@ -84,13 +84,13 @@ public class SuperMarketDataGenerator {
 				// Se reinicializan los randoms para nuevos datos-->2
 				sedeNumber = rand.nextInt(4) + 0;
 				numSedes = rand.nextInt(5) + 1;
-				numVentas = rand.nextInt(80000) + 5000;
+				numVentas = rand.nextInt(650000) + 5000;
 				modelo = addResourceTriples(modelo, resource, randomDate(), numVentas, sedesSupermercado[sedeNumber],
 						graph);
 				// Se reinicializan los randoms para nuevos datos-->3
 				sedeNumber = rand.nextInt(4) + 0;
 				numSedes = rand.nextInt(5) + 1;
-				numVentas = rand.nextInt(80000) + 5000;
+				numVentas = rand.nextInt(98000) + 5000;
 				modelo = addResourceTriples(modelo, resource, randomDate(), numVentas, sedesSupermercado[sedeNumber],
 						graph);
 				cont++;
@@ -102,19 +102,19 @@ public class SuperMarketDataGenerator {
 				// Se reinicializan los randoms para nuevos datos-->2
 				sedeNumber = rand.nextInt(4) + 0;
 				numSedes = rand.nextInt(5) + 1;
-				numVentas = rand.nextInt(80000) + 5000;
+				numVentas = rand.nextInt(760000) + 5000;
 				modelo = addResourceTriples(modelo, resource, randomDate(), numVentas, sedesSupermercado[sedeNumber],
 						graph);
 				// Se reinicializan los randoms para nuevos datos-->3
 				sedeNumber = rand.nextInt(4) + 0;
 				numSedes = rand.nextInt(5) + 1;
-				numVentas = rand.nextInt(80000) + 5000;
+				numVentas = rand.nextInt(40000) + 5000;
 				modelo = addResourceTriples(modelo, resource, randomDate(), numVentas, sedesSupermercado[sedeNumber],
 						graph);
 				// Se reinicializan los randoms para nuevos datos-->4
 				sedeNumber = rand.nextInt(4) + 0;
 				numSedes = rand.nextInt(5) + 1;
-				numVentas = rand.nextInt(80000) + 5000;
+				numVentas = rand.nextInt(8000) + 5000;
 				modelo = addResourceTriples(modelo, resource, randomDate(), numVentas, sedesSupermercado[sedeNumber],
 						graph);
 				cont++;
@@ -132,19 +132,19 @@ public class SuperMarketDataGenerator {
 				// Se reinicializan los randoms para nuevos datos-->3
 				sedeNumber = rand.nextInt(4) + 0;
 				numSedes = rand.nextInt(5) + 1;
-				numVentas = rand.nextInt(80000) + 5000;
+				numVentas = rand.nextInt(8000) + 5000;
 				modelo = addResourceTriples(modelo, resource, randomDate(), numVentas, sedesSupermercado[sedeNumber],
 						graph);
 				// Se reinicializan los randoms para nuevos datos-->4
 				sedeNumber = rand.nextInt(4) + 0;
 				numSedes = rand.nextInt(5) + 1;
-				numVentas = rand.nextInt(80000) + 5000;
+				numVentas = rand.nextInt(8000) + 5000;
 				modelo = addResourceTriples(modelo, resource, randomDate(), numVentas, sedesSupermercado[sedeNumber],
 						graph);
 				// Se reinicializan los randoms para nuevos datos-->5
 				sedeNumber = rand.nextInt(4) + 0;
 				numSedes = rand.nextInt(5) + 1;
-				numVentas = rand.nextInt(80000) + 5000;
+				numVentas = rand.nextInt(60000) + 5000;
 				modelo = addResourceTriples(modelo, resource, randomDate(), numVentas, sedesSupermercado[sedeNumber],
 						graph);
 				cont++;
@@ -182,6 +182,9 @@ public class SuperMarketDataGenerator {
 			String graph) throws RepositoryException, MalformedQueryException, QueryEvaluationException {
 		String predicadoVentaRecursoFecha = predicadoVentaSede + "-" + date + "-"
 				+ stardog.getResourceName(resource, graph);
+		if(resource.equals("http://g.co/kg/g/11dxdznfwj")){
+			System.out.println("aqui" + sede);
+		}
 		// Se añade que la sucursal ha tenido unas ventas de un producto en una
 		// determinada fecha
 		transform.addTriple(sede, predicadoVenta, predicadoVentaRecursoFecha);

@@ -107,8 +107,7 @@ public class Stardog {
 			throws RepositoryException, MalformedQueryException, QueryEvaluationException {
 		List<String> listaRecursos = new ArrayList<>();
 		String result = "";
-		String queryText = "SELECT ?labelRecurso (SUM(?numVentas) as ?numTotal) where{ graph<http://lod.eurohelp.es/graph/novelas>{?recursoAutorDbpedia <http://schema.org/author> ?recurso. ?datosVenta <http://lod.eurohelp.es/def/product> ?recurso. ?recurso <http://schema.org/name> ?labelRecurso. ?sede ?seVendio ?datosVenta. ?datosVenta <http://dbpedia.org/ontology/numberSold> ?numVentas.} FILTER (?labelRecurso IN (\""
-				+ resourceName + "\"^^xsd:string))}GROUP BY ?labelRecurso ?recurso";
+		String queryText = "SELECT ?labelRecurso (SUM(?numVentas) as ?numTotal) where{ graph<http://lod.eurohelp.es/graph/novelas>{ ?datosVenta <http://lod.eurohelp.es/def/product> ?recurso. ?recurso <http://schema.org/name> ?labelRecurso. ?sede ?seVendio ?datosVenta. ?datosVenta <http://dbpedia.org/ontology/numberSold> ?numVentas.} FILTER (?labelRecurso IN (\""+resourceName+"\"^^xsd:string))}GROUP BY ?labelRecurso ?recurso";
 		System.out.println("Query obtiene nombre recurso-->" + queryText);
 		TupleQuery query = repository.prepareTupleQuery(QueryLanguage.SPARQL, queryText);
 		TupleQueryResult queryResults = query.evaluate();
@@ -132,9 +131,7 @@ public class Stardog {
 			TupleQueryResultHandlerException, UnsupportedQueryResultFormatException, IOException {
 		String result = "";
 		List<String> listaDatos = new ArrayList<String>();
-		String queryText = "SELECT ?recursoExterno ?nombreSede  (SUM(?numVentas) as ?numTotal) where{ graph<http://lod.eurohelp.es/graph/novelas>{?recursoAutorDbpedia <http://schema.org/author> ?recurso. ?datosVenta <http://lod.eurohelp.es/def/product> ?recurso. ?sede ?seVendio ?datosVenta.?sede rdfs:label ?nombreSede. ?datosVenta <http://dbpedia.org/ontology/numberSold> ?numVentas. SERVICE <http://es.dbpedia.org/sparql>{?recursoExterno rdfs:label \""
-				+ resourceName + "\"@es. FILTER (?recursoAutorDbpedia=?recursoExterno) }} FILTER (?nombreSede = \""
-				+ sede + "\")} GROUP BY ?recursoExterno ?nombreSede";
+		String queryText = "SELECT ?labelRecurso ?nombreSede  (SUM(?numVentas) as ?numTotal) where{ graph<http://lod.eurohelp.es/graph/novelas>{?recurso <http://schema.org/name> ?labelRecurso. ?datosVenta <http://lod.eurohelp.es/def/product> ?recurso. ?sede ?seVendio ?datosVenta.?sede rdfs:label ?nombreSede. ?datosVenta <http://dbpedia.org/ontology/numberSold> ?numVentas. FILTER (?nombreSede = \""+sede+"\") FILTER (?labelRecurso = (\""+resourceName+"\"^^xsd:string))}} GROUP BY ?labelRecurso ?nombreSede";
 		System.out.println("Query obtiene nombre recurso-->" + queryText);
 		TupleQuery query = repository.prepareTupleQuery(QueryLanguage.SPARQL, queryText);
 		TupleQueryResult queryResults = query.evaluate();
@@ -162,7 +159,9 @@ public class Stardog {
 			throws RepositoryException, MalformedQueryException, QueryEvaluationException {
 		List<String> listaRecursos = new ArrayList<>();
 		String result = "";
-		String queryText = "SELECT ?labelAutor (SUM(?numTotal) as ?ventasTotales) where{ graph<http://lod.eurohelp.es/graph/novelas>{?recursoAutorDbpedia <http://schema.org/author> ?recurso. ?datosVenta <http://lod.eurohelp.es/def/product> ?recurso. ?sede ?seVendio ?datosVenta. ?sede rdfs:label ?nombreSede. ?datosVenta <http://dbpedia.org/ontology/numberSold> ?numVentas. SERVICE <http://es.dbpedia.org/sparql>{?recursoExterno rdfs:label ?labelAutor. FILTER (?recursoAutorDbpedia=?recursoExterno) FILTER (?labelAutor IN (\""+autor+"\"@es))} BIND (SUM(?numVentas) as ?numTotal) }} GROUP BY ?labelAutor ?recursoExterno ?nombreSede";
+		String queryText = "SELECT ?labelAutor (SUM(?numTotal) as ?ventasTotales) where{ graph<http://lod.eurohelp.es/graph/novelas>{?recursoAutorDbpedia <http://schema.org/author> ?recurso. ?datosVenta <http://lod.eurohelp.es/def/product> ?recurso. ?sede ?seVendio ?datosVenta. ?sede rdfs:label ?nombreSede. ?datosVenta <http://dbpedia.org/ontology/numberSold> ?numVentas. SERVICE <http://es.dbpedia.org/sparql>{?recursoExterno rdfs:label ?labelAutor. FILTER (?recursoAutorDbpedia=?recursoExterno) FILTER (?labelAutor IN (\""
+				+ autor
+				+ "\"@es))} BIND (SUM(?numVentas) as ?numTotal) }} GROUP BY ?labelAutor ?recursoExterno ?nombreSede";
 		System.out.println("Query obtiene nombre recurso-->" + queryText);
 		TupleQuery query = repository.prepareTupleQuery(QueryLanguage.SPARQL, queryText);
 		TupleQueryResult queryResults = query.evaluate();
@@ -184,22 +183,39 @@ public class Stardog {
 			throws RepositoryException, MalformedQueryException, QueryEvaluationException {
 		List<String> listaRecursos = new ArrayList<>();
 		String result = "";
-		String queryText = "SELECT ?labelAutor ?labelSede (SUM(?numTotal) as ?ventasTotales) where{ graph<http://lod.eurohelp.es/graph/novelas>{?recursoAutorDbpedia <http://schema.org/author> ?recurso. ?datosVenta <http://lod.eurohelp.es/def/product> ?recurso. ?recurso <http://schema.org/name> ?labelRecurso. ?sede ?seVendio ?datosVenta.?sede rdfs:label ?labelSede. ?datosVenta <http://dbpedia.org/ontology/numberSold> ?numVentas. SERVICE <http://es.dbpedia.org/sparql>{ ?recursoExterno rdfs:label ?labelAutor FILTER (?recursoAutorDbpedia=?recursoExterno) FILTER (?labelAutor IN (\""+autor+"\"@es)) }FILTER (?labelSede IN (\""+sede+"\")) BIND (SUM(?numVentas) as ?numTotal)}} GROUP BY ?numVentas ?labelAutor ?labelSede";
-		System.out.println("Query obtiene nombre recurso-->" + queryText);
-		TupleQuery query = repository.prepareTupleQuery(QueryLanguage.SPARQL, queryText);
+		String queryDbpedia = "select ?recursoExterno {?recursoExterno ?r \""+autor+"\"@es FILTER regex(str(?recursoExterno), \"http://dbpedia.org\")} LIMIT 1";
+		Repository repo = new SPARQLRepository("http://es.dbpedia.org/sparql");
+		repo.initialize();
+		RepositoryConnection repoConn = repo.getConnection();
+		TupleQuery query = repoConn.prepareTupleQuery(QueryLanguage.SPARQL, queryDbpedia);
 		TupleQueryResult queryResults = query.evaluate();
 		while (queryResults.hasNext()) {
 			result = queryResults.next().toString();
-			result = result.replace("[labelAutor=\"", "");
-			result = result.replace("\"@es", "");
-			result = result.replace("[", "");
-			result = result.replace("labelSede=\"", "");
-			result = result.replace("ventasTotales=\"", "");
-			result = result.replace("\"", "");
-			result = result.replace("^^<http://www.w3.org/2001/XMLSchema#integer>]", "");
-			String[] resultados = result.split(";");
-			listaRecursos = Arrays.asList(resultados);
+			result = result.replace("[recursoExterno=", "");
+			result = result.replace("]", "");
+			System.out.println(result);
 		}
+
+			String queryText = "SELECT ?recursoAutorDbpedia ?labelSede (SUM(?numTotal) as ?ventasTotales) where{ graph<http://lod.eurohelp.es/graph/novelas>{?recursoAutorDbpedia <http://schema.org/author> ?recurso. ?datosVenta <http://lod.eurohelp.es/def/product> ?recurso. ?recurso <http://schema.org/name> ?labelRecurso. ?sede ?seVendio ?datosVenta.?sede rdfs:label ?labelSede. ?datosVenta <http://dbpedia.org/ontology/numberSold> ?numVentas. FILTER (?labelSede IN (\""+sede+"\")) BIND (SUM(?numVentas) as ?numTotal) FILTER (?recursoAutorDbpedia =<"+result+">)  }} GROUP BY ?numVentas ?labelSede ?recursoAutorDbpedia";
+			System.out.println(queryText);
+			query = repository.prepareTupleQuery(QueryLanguage.SPARQL, queryText);
+			queryResults = query.evaluate();
+			while (queryResults.hasNext()) {
+				result = queryResults.next().toString();
+				
+				result = result.replace("[recursoAutorDbpedia=", "");
+				result = result.replace("labelSede=\"", "");
+				result = result.replace("ventasTotales=\"", "");
+				result = result.replace("\"", "");
+				result = result.replace("^^<http://www.w3.org/2001/XMLSchema#integer>]", "");
+				String[] resultados = result.split(";");
+				if(resultados.length>1){
+					resultados[0]=autor;
+				}
+				listaRecursos = Arrays.asList(resultados);
+				
+			}
+		
 		System.out.println("El resultado del nombre es -->" + result);
 		return listaRecursos;
 	}
@@ -246,7 +262,7 @@ public class Stardog {
 		Repository repo = new SPARQLRepository("http://es.dbpedia.org/sparql");
 		repo.initialize();
 		RepositoryConnection repoConn = repo.getConnection();
-		String queryStardog = "select distinct ?recursoDbpedia where{graph<http://lod.eurohelp.es/graph/novelas>{?recursoDbpedia <http://www.w3.org/2002/07/owl#sameAs> ?recursoPropio.}}";
+		String queryStardog = "select distinct ?recursoDbpedia where{graph<http://lod.eurohelp.es/graph/novelas>{?recursoDbpedia <http://schema.org/author> ?libro.}}";
 		TupleQuery query = repository.prepareTupleQuery(QueryLanguage.SPARQL, queryStardog);
 		TupleQueryResult queryResults = query.evaluate();
 		while (queryResults.hasNext()) {
@@ -259,9 +275,8 @@ public class Stardog {
 				listaRecursosDbpedia.add(nombreAutor);
 			}
 		}
-		for (String libro : listaRecursosDbpedia) {
-			String queryDbpedia = "SELECT ?nombreAutor where{ ?libro <http://es.dbpedia.org/property/autor> ?autor. ?autor <http://www.w3.org/2000/01/rdf-schema#label> ?nombreAutor. FILTER (?libro = <"
-					+ libro + ">)} LIMIT 1";
+		for (String autor : listaRecursosDbpedia) {
+			String queryDbpedia = "SELECT ?nombreAutor where{?autor <http://www.w3.org/2000/01/rdf-schema#label> ?nombreAutor. FILTER (?autor = <"+autor+">)} LIMIT 1";
 			TupleQuery tupleQueryStardog = repoConn.prepareTupleQuery(QueryLanguage.SPARQL, queryDbpedia);
 			queryResults = tupleQueryStardog.evaluate();
 
@@ -274,6 +289,7 @@ public class Stardog {
 				}
 			}
 		}
+		Collections.sort(listaAutores);
 		return listaAutores;
 	}
 
@@ -299,6 +315,7 @@ public class Stardog {
 				}
 			}
 		}
+		Collections.sort(listaAutoresLugarNacimientoConcreto);
 		return listaAutoresLugarNacimientoConcreto;
 	}
 
@@ -355,6 +372,7 @@ public class Stardog {
 				}
 			}
 		}
+		Collections.sort(listaLugaresNacimientoAutores);
 		return listaLugaresNacimientoAutores;
 	}
 

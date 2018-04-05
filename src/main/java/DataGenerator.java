@@ -52,9 +52,9 @@ public class DataGenerator {
 		// queryBooks.replaceAll(" ", "-"));
 		//
 		// // Se reinician properties
-		 properties = new Properties();
-		 properties.load(new
-		 FileInputStream("src/main/resources/linksdiscovery.properties"));
+//		 properties = new Properties();
+//		 properties.load(new
+//		 FileInputStream("src/main/resources/linksdiscovery.properties"));
 		//
 		// System.err.println("Se enlaza la información de los discos a la ya
 		// existente");
@@ -95,15 +95,15 @@ public class DataGenerator {
 		// almacenados previamente
 		SuperMarketDataGenerator sMarket = new SuperMarketDataGenerator();
 //		// Se genera nueva información para los libros
-//		Model datosPropios = sMarket.generateData("http://lod.eurohelp.es/graph/" + queryBooks.replaceAll(" ", "-"));
+		Model datosPropios = sMarket.generateData("http://lod.eurohelp.es/graph/" + queryBooks.replaceAll(" ", "-"));
 //		System.err.println("Se almacena la nueva información");
-//		stardog.uploadModel(datosPropios, "http://lod.eurohelp.es/graph/" + queryBooks.replaceAll(" ", "-"));
+		stardog.uploadModel(datosPropios, "http://lod.eurohelp.es/graph/" + queryBooks.replaceAll(" ", "-"));
 //		// Se genera nueva informacion para los discos
 //		datosPropios = sMarket.generateData("http://lod.eurohelp.es/graph/" + queryMusicAlbum.replaceAll(" ", "-"));
 //		stardog.uploadModel(datosPropios, "http://lod.eurohelp.es/graph/" + queryMusicAlbum.replaceAll(" ", "-"));
 
-		Model sedesLabels = sMarket.generateSedesData("http://lod.eurohelp.es/graph/" + queryBooks.replaceAll(" ", "-"));
-		stardog.uploadModel(sedesLabels);
+	//	Model sedesLabels = sMarket.generateSedesData("http://lod.eurohelp.es/graph/" + queryBooks.replaceAll(" ", "-"));
+		//stardog.uploadModel(sedesLabels);
 
 	}
 }
