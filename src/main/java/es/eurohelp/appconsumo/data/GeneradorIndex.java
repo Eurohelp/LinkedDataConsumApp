@@ -141,7 +141,6 @@ public class GeneradorIndex {
 		return stringWriter.toString();
 	}
 
-	// ?????
 
 	public String generarIndex(String tipoConsulta, String segundaElecc, List<String> listaNombreRecursos,
 			String recursoSeleccionado, String tipoInformacionSolicitada, List<String> listaSedes,

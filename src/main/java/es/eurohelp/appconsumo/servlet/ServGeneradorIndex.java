@@ -61,7 +61,6 @@ public class ServGeneradorIndex extends HttpServlet {
 		GeneradorIndex generadorIndex = new GeneradorIndex();
 		Stardog stardog = new Stardog();
 		String tipoConsulta = request.getParameter("tipoInformacion");
-		System.out.println(tipoConsulta);
 		String tipoRecursoSobreElQueSeSolicitaInformacion = request.getParameter("tipoInformacion-Ventas");
 		String tipoInformacionSolicitada = request.getParameter("tipoInformacion-Ventas-Autor-Cantante");
 		String tipoSede = request.getParameter("tipoInformacion-Ventas-Autor-Nombre-Sede");
@@ -74,7 +73,6 @@ public class ServGeneradorIndex extends HttpServlet {
 		String responseData = "";
 		if (tipoConsulta == null) {// Si es la primera vez que se ejecuta
 			try {
-				System.out.println(1);
 				responseData = generadorIndex.generarIndex("null");
 			} catch (TemplateException e) {
 				e.printStackTrace();
